@@ -12,7 +12,7 @@ data class MiningConfig(
     val useTls: Boolean = true,
     val autoReconnect: Boolean = true,
     val mineWhenScreenOff: Boolean = false,
-    val donateLevel: Int = 0,  // 強制 0%
+    val donateLevel: Int = 1,  // 捐贈 1%
     val customArgs: String = "",
     val retries: Int = 5,
     val retryPause: Int = 5,
@@ -38,7 +38,7 @@ data class MiningConfig(
                     "tls": $useTls
                 }
             ],
-            "donate-level": 0,
+            "donate-level": 1,
             "log-file": null,
             "print-time": $printTime,
             "health-print-time": $printTime,

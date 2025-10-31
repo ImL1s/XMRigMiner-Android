@@ -97,13 +97,17 @@ class MiningWorker @AssistedInject constructor(
             "-u", config.walletAddress,
             "-p", config.workerName,
             "-t", config.threads.toString(),
-            "--donate-level=0",
+            "--donate-level=1",
+            "--donate-over-proxy=1",
             "--no-color",
             "--print-time=10",  // 每 10 秒輸出統計
             "--log-file=${applicationContext.filesDir.absolutePath}/xmrig.log"
         ).apply {
             directory(applicationContext.filesDir)
             redirectErrorStream(true)
+            // 設置 LD_LIBRARY_PATH 讓系統找到 libc++_shared.so
+            val libPath = File(binaryPath).parent
+            environment()["LD_LIBRARY_PATH"] = libPath
         }.start()
 
         Timber.i("XMRig process started")
