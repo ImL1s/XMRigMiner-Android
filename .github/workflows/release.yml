@@ -1,9 +1,10 @@
-name: Android CI/CD
-
 on:
   push:
     tags:
       - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
   build:
