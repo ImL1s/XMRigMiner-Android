@@ -1,5 +1,8 @@
 # XMRig Miner for Android
 
+[![Android CI/CD](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml/badge.svg)](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 A full-featured Android Monero (XMR) mining application based on XMRig 6.21.0 core engine, featuring a modern Material Design 3 interface built with Jetpack Compose.
 
 [繁體中文](README_zh-TW.md)
@@ -52,9 +55,9 @@ This application has a 1% donation level to support continuous maintenance and i
 - **Language**: Kotlin 1.9.20
 - **UI Framework**: Jetpack Compose (Material Design 3)
 - **Architecture**: MVVM + Clean Architecture
-- **Dependency Injection**: Koin
+- **Dependency Injection**: Hilt (Dagger)
 - **Asynchronous**: Kotlin Coroutines + Flow
-- **Persistence**: DataStore (Preferences)
+- **Persistence**: DataStore (Preferences) + Room
 - **Background Tasks**: WorkManager
 - **Native Layer**: C++ (XMRig 6.21.0)
 - **Build Tools**: Gradle 8.2.0 + AGP 8.2.0
@@ -100,14 +103,14 @@ app/
 
 1. **Clone the Repo**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/ImL1s/XMRigMiner-Android.git
 cd XMRigMiner-Android
 ```
 
 2. **Configure NDK**
 Ensure your `local.properties` has the NDK path:
 ```properties
-ndk.dir=/Users/<username>/Library/Android/sdk/ndk/26.1.10909125
+ndk.dir=/Users/<username>/Library/Android/sdk/ndk/26.3.11579264
 ```
 
 3. **Sync Dependencies**

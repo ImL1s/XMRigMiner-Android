@@ -31,7 +31,7 @@ export ANDROID_NDK_HOME=$PWD/android-ndk-r26c
 
 ```bash
 cd /tmp
-git clone https://github.com/xmrig/xmrig.git
+git clone https://github.com/ImL1s/XMRigMiner-Android.git
 cd xmrig
 git checkout v6.21.0  # Use stable version
 ```
@@ -158,19 +158,19 @@ ls -lh build/android/arm32/xmrig
 ```bash
 # Copy binaries
 cp build/android/arm64/xmrig \
-   /path/to/XMRigMiner/app/src/main/assets/xmrig_arm64
+   /path/to/XMRigMiner-Android/app/src/main/assets/xmrig_arm64
 
 cp build/android/arm32/xmrig \
-   /path/to/XMRigMiner/app/src/main/assets/xmrig_arm32
+   /path/to/XMRigMiner-Android/app/src/main/assets/xmrig_arm32
 
 # Set permissions
-chmod 644 /path/to/XMRigMiner/app/src/main/assets/xmrig_*
+chmod 644 /path/to/XMRigMiner-Android/app/src/main/assets/xmrig_*
 ```
 
 ## Step 7: Rebuild Android App
 
 ```bash
-cd /path/to/XMRigMiner
+cd /path/to/XMRigMiner-Android
 ./gradlew clean assembleDebug
 ```
 
@@ -246,4 +246,4 @@ adb shell run-as com.iml1s.xmrigminer.debug ./files/xmrig --version
 
 ---
 
-**Last Updated**: 2025-10-30
+**Last Updated**: 2026-01-03

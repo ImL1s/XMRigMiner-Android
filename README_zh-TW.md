@@ -1,5 +1,8 @@
 # XMRig Miner for Android
 
+[![Android CI/CD](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml/badge.svg)](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 一個功能完整的 Android Monero (XMR) 挖礦應用，基於 XMRig 6.21.0 核心引擎，採用 Jetpack Compose 構建的現代化 Material Design 3 界面。
 
 [English](README.md)
@@ -52,9 +55,9 @@
 - **語言**: Kotlin 1.9.20
 - **UI 框架**: Jetpack Compose (Material Design 3)
 - **架構模式**: MVVM + Clean Architecture
-- **依賴注入**: Koin
+- **依賴注入**: Hilt (Dagger)
 - **異步處理**: Kotlin Coroutines + Flow
-- **數據持久化**: DataStore (Preferences)
+- **數據持久化**: DataStore (Preferences) + Room
 - **後台任務**: WorkManager
 - **Native 層**: C++ (XMRig 6.21.0)
 - **構建工具**: Gradle 8.2.0 + AGP 8.2.0
@@ -128,14 +131,14 @@ app/
 
 1. **克隆項目**
 ```bash
-git clone <your-repo-url>
-cd XMRigMiner
+git clone https://github.com/ImL1s/XMRigMiner-Android.git
+cd XMRigMiner-Android
 ```
 
 2. **配置 NDK**
 確保在 `local.properties` 中配置了 NDK 路徑：
 ```properties
-ndk.dir=/Users/<username>/Library/Android/sdk/ndk/26.1.10909125
+ndk.dir=/Users/<username>/Library/Android/sdk/ndk/26.3.11579264
 ```
 
 3. **同步依賴**
@@ -369,7 +372,7 @@ XMRig 採用 GPLv3 許可證，詳見：https://github.com/xmrig/xmrig
 
 - [XMRig](https://github.com/xmrig/xmrig) - 強大的 Monero 挖礦引擎
 - [Jetpack Compose](https://developer.android.com/jetpack/compose) - 現代化的 Android UI 工具包
-- [Koin](https://insert-koin.io/) - 輕量級依賴注入框架
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - 正式的 Android 依賴注入框架
 
 ## 🔍 代碼安全檢查
 
@@ -394,9 +397,12 @@ XMRig 採用 GPLv3 許可證，詳見：https://github.com/xmrig/xmrig
 
 ## 📝 更新日誌
 
-### v1.0.0 (2025-10-31)
-- ✨ 首次發布
+### v1.0.1 (2026-01-03)
+- ✨ 核心功能優化與多語系支援
 - ✅ 完整的 XMRig 6.21.0 集成
+- ✅ 自動化 CI/CD 發布流程 (GitHub Actions)
+- ✅ 授權變更為 GPLv3
+- ✅ 修正新版 Android CPU 監控說明
 - ✅ Material Design 3 UI
 - ✅ 實時算力和系統監控
 - ✅ 完整的配置管理

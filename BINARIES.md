@@ -77,8 +77,10 @@ adb shell run-as com.iml1s.xmrigminer.debug ./files/xmrig --version
 
 | Binary | Status | Type | Size |
 |--------|--------|------|------|
-| xmrig_arm64_v8a | ✅ | Mock | ~500 bytes |
-| xmrig_armeabi_v7a | ✅ | Mock | ~500 bytes |
+| xmrig_arm64_v8a | ✅ | Real/Mock | 2-5 MB / <1KB |
+| xmrig_armeabi_v7a | ✅ | Real/Mock | 2-5 MB / <1KB |
+
+**Note**: The release v1.0.1+ on GitHub includes real binaries. The source code uses mock binaries by default for testing.
 
 **To upgrade to real binaries:**
 ```bash
