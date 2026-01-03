@@ -1,5 +1,7 @@
 # XMRig Binary Compilation Guide
 
+[繁體中文](BINARIES_zh-TW.md)
+
 ## 📦 Binary Options
 
 This project supports three ways to get XMRig binaries:

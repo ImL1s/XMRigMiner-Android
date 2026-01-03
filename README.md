@@ -1,406 +1,216 @@
 # XMRig Miner for Android
 
-一個功能完整的 Android Monero (XMR) 挖礦應用，基於 XMRig 6.21.0 核心引擎，採用 Jetpack Compose 構建的現代化 Material Design 3 界面。
+A full-featured Android Monero (XMR) mining application based on XMRig 6.21.0 core engine, featuring a modern Material Design 3 interface built with Jetpack Compose.
 
-## 📱 功能特性
+[繁體中文](README_zh-TW.md)
 
-### 核心功能
-- ✅ **完整的 XMRig 集成** - 基於 XMRig 6.21.0，支持 RandomX 算法
-- 🎯 **原生性能優化** - 使用 C++ NDK 編譯，針對 ARMv8 (64-bit) 優化
-- 📊 **實時監控** - 實時顯示算力、難度、CPU 使用率、溫度等
-- 🔧 **靈活配置** - 完整的礦池配置、線程管理、性能調優選項
-- 🌐 **多礦池支持** - 支持主流 Monero 礦池（SupportXMR、MoneroOcean 等）
-- 💾 **配置持久化** - 使用 DataStore 保存用戶配置
+## 📱 Features
 
-### 監控功能
-- **算力監控**
-  - 10秒/60秒/15分鐘平均算力
-  - 峰值算力記錄
-  - 實時算力曲線圖
+### Core Features
+- ✅ **Full XMRig Integration** - Based on XMRig 6.21.0, supports RandomX algorithm.
+- 🎯 **Native Performance Optimization** - Compiled with C++ NDK, optimized for ARMv8 (64-bit).
+- 📊 **Real-time Monitoring** - Real-time display of hashrate, difficulty, CPU usage, temperature, etc.
+- 🔧 **Flexible Configuration** - Complete pool configuration, thread management, and performance tuning options.
+- 🌐 **Multi-pool Support** - Supports major Monero pools (SupportXMR, MoneroOcean, etc.).
+- 💾 **Configuration Persistence** - Uses DataStore to save user settings.
+
+### Monitoring Features
+- **Hashrate Monitoring**
+  - 10s/60s/15m average hashrate
+  - Peak hashrate record
+  - Real-time hashrate graph
   
-- **系統監控**
-  - CPU 使用率（嘗試讀取 /proc/stat，Android 11+ 可能受限）
-  - 設備溫度監控
-  - 電池狀態和充電狀態
-  - 網絡連接狀態
+- **System Monitoring**
+  - CPU usage (attempts to read /proc/stat, may be restricted on Android 11+)
+  - Device temperature monitoring
+  - Battery and charging status
+  - Network connection status
 
-- **挖礦狀態**
-  - 已接受/拒絕的份額數
-  - 當前難度值
-  - 礦池連接狀態
-  - XMRig 日誌輸出
+- **Mining Status**
+  - Accepted/Rejected shares
+  - Current difficulty
+  - Pool connection status
+  - XMRig log output
 
-### 安全特性
-- 🔒 **開發者捐贈** - donate-level = 1% 用於支持開發者
-- 🔐 **隱私保護** - 不收集任何用戶數據
-- 🛡️ **開源透明** - 完整源代碼公開
+### Security Features
+- 🔒 **Developer Donation** - donate-level = 1% to support the developer.
+- 🔐 **Privacy Protection** - No user data collection.
+- 🛡️ **Open Source & Transparent** - Full source code available.
 
-### 開發者捐贈
-本應用設置了 1% 的捐贈級別，用於支持開發者持續維護和改進此項目。
-- **捐贈比例**: 1%
-- **捐贈地址**: 85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
-- **透明度**: 所有捐贈設置均在源代碼中公開可見
-- **工作原理**: XMRig 會在挖礦時間的 1% 切換到開發者的錢包地址進行挖礦
+### Developer Donation
+This application has a 1% donation level to support continuous maintenance and improvement.
+- **Donation Rate**: 1%
+- **Donation Address**: 85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+- **Transparency**: All donation settings are openly visible in the source code.
+- **How it works**: XMRig switches to the developer's wallet address for 1% of the mining time.
 
-> **注意**: 由於 XMRig 的捐贈地址是在編譯時硬編碼到二進制文件中的，如需使用自定義捐贈地址，需要重新編譯 XMRig。當前使用的是 XMRig 官方默認的捐贈地址。如果您想支持本項目開發者，可以直接向上述地址捐贈 XMR。
+> **Note**: Since XMRig's donation address is hardcoded during compilation, you must recompile XMRig to use a custom donation address. Currently, the official default XMRig donation address is used. If you wish to support this project's developer, you can direct donate XMR to the address above.
 
-## 🏗️ 技術架構
+## 🏗️ Technical Architecture
 
-### 技術棧
-- **語言**: Kotlin 1.9.20
-- **UI 框架**: Jetpack Compose (Material Design 3)
-- **架構模式**: MVVM + Clean Architecture
-- **依賴注入**: Koin
-- **異步處理**: Kotlin Coroutines + Flow
-- **數據持久化**: DataStore (Preferences)
-- **後台任務**: WorkManager
-- **Native 層**: C++ (XMRig 6.21.0)
-- **構建工具**: Gradle 8.2.0 + AGP 8.2.0
+### Tech Stack
+- **Language**: Kotlin 1.9.20
+- **UI Framework**: Jetpack Compose (Material Design 3)
+- **Architecture**: MVVM + Clean Architecture
+- **Dependency Injection**: Koin
+- **Asynchronous**: Kotlin Coroutines + Flow
+- **Persistence**: DataStore (Preferences)
+- **Background Tasks**: WorkManager
+- **Native Layer**: C++ (XMRig 6.21.0)
+- **Build Tools**: Gradle 8.2.0 + AGP 8.2.0
 
-### 項目結構
+### Project Structure
 ```
 app/
 ├── src/
 │   ├── main/
 │   │   ├── java/com/iml1s/xmrigminer/
-│   │   │   ├── data/              # 數據層
-│   │   │   │   ├── model/         # 數據模型
-│   │   │   │   └── repository/    # 數據倉庫
-│   │   │   ├── domain/            # 業務邏輯層
-│   │   │   ├── presentation/      # 展示層
-│   │   │   │   ├── config/        # 配置界面
-│   │   │   │   ├── mining/        # 挖礦界面
-│   │   │   │   └── stats/         # 統計界面
-│   │   │   ├── service/           # 後台服務
-│   │   │   │   ├── MiningWorker.kt    # 挖礦 Worker
-│   │   │   │   └── MonitorWorker.kt   # 監控 Worker
-│   │   │   ├── native/            # JNI 橋接
-│   │   │   └── di/                # 依賴注入
-│   │   ├── cpp/                   # C++ 原生代碼
-│   │   │   └── native-bridge.cpp  # XMRig 橋接層
-│   │   └── res/                   # 資源文件
-│   └── xmrig/                     # XMRig 源碼
-│       └── libs/                  # 預編譯 XMRig 庫
+│   │   │   ├── data/              # Data layer
+│   │   │   │   ├── model/         # Data models
+│   │   │   │   └── repository/    # Repositories
+│   │   │   ├── domain/            # Domain layer (Business logic)
+│   │   │   ├── presentation/      # Presentation layer
+│   │   │   │   ├── config/        # Config UI
+│   │   │   │   ├── mining/        # Mining UI
+│   │   │   │   └── stats/         # Stats UI
+│   │   │   ├── service/           # Background services
+│   │   │   │   ├── MiningWorker.kt    # Mining Worker
+│   │   │   │   └── MonitorWorker.kt   # Monitoring Worker
+│   │   │   ├── native/            # JNI bridge
+│   │   │   └── di/                # Dependency injection
+│   │   ├── cpp/                   # C++ native code
+│   │   │   └── native-bridge.cpp  # XMRig bridge layer
+│   │   └── res/                   # Resource files
+│   └── xmrig/                     # XMRig source
+│       └── libs/                  # Pre-compiled XMRig libs
 └── build.gradle.kts
 ```
 
-### 架構層次
-```
-┌─────────────────────────────────┐
-│     Presentation Layer          │
-│   (Jetpack Compose UI)          │
-└─────────────┬───────────────────┘
-              │
-┌─────────────▼───────────────────┐
-│      ViewModel Layer             │
-│   (State Management)             │
-└─────────────┬───────────────────┘
-              │
-┌─────────────▼───────────────────┐
-│      Domain Layer                │
-│   (Business Logic)               │
-└─────────────┬───────────────────┘
-              │
-┌─────────────▼───────────────────┐
-│       Data Layer                 │
-│  (Repository + DataStore)        │
-└─────────────┬───────────────────┘
-              │
-┌─────────────▼───────────────────┐
-│    Service Layer                 │
-│  (WorkManager + XMRig)           │
-└──────────────────────────────────┘
-```
+## 🚀 Quick Start
 
-## 🚀 快速開始
-
-### 環境要求
-- Android Studio Hedgehog (2023.1.1) 或更高版本
+### Requirements
+- Android Studio Hedgehog (2023.1.1) or higher
 - Android SDK 34
 - NDK 26.1.10909125
 - CMake 3.22.1
 - JDK 17
 - Gradle 8.2+
 
-### 編譯步驟
+### Build Steps
 
-1. **克隆項目**
+1. **Clone the Repo**
 ```bash
 git clone <your-repo-url>
-cd XMRigMiner
+cd XMRigMiner-Android
 ```
 
-2. **配置 NDK**
-確保在 `local.properties` 中配置了 NDK 路徑：
+2. **Configure NDK**
+Ensure your `local.properties` has the NDK path:
 ```properties
 ndk.dir=/Users/<username>/Library/Android/sdk/ndk/26.1.10909125
 ```
 
-3. **同步依賴**
+3. **Sync Dependencies**
 ```bash
 ./gradlew clean build
 ```
 
-4. **編譯 APK**
+4. **Build APK**
 ```bash
-# Debug 版本
+# Debug version
 ./gradlew assembleDebug
 
-# Release 版本
+# Release version
 ./gradlew assembleRelease
 ```
 
-### 運行應用
+### Running the App
 
-1. 連接 Android 設備或啟動模擬器（推薦真機，模擬器性能較差）
-2. 在 Android Studio 中點擊 Run 按鈕
-3. 或使用命令行：
+1. Connect an Android device or start an emulator (physical device recommended).
+2. Click the "Run" button in Android Studio.
+3. Or use the command line:
 ```bash
 ./gradlew installDebug
 ```
 
-## 📱 使用說明
+## 📱 Usage Instructions
 
-### 首次配置
+### Initial Setup
 
-1. **錢包配置**
-   - 輸入你的 Monero 錢包地址
-   - 選擇礦池（默認：pool.supportxmr.com:3333）
-   - 設置礦工名稱（可選）
+1. **Wallet Configuration**
+   - Enter your Monero wallet address.
+   - Select a pool (Default: pool.supportxmr.com:3333).
+   - Set a worker name (optional).
 
-2. **性能調優**
-   - **線程數**: 默認為 CPU 核心數 - 1，建議保持默認
-   - **最大 CPU 使用率**: 建議設置為 75% 以避免過熱
-   - **TLS 加密**: 建議啟用以保護連接安全
+2. **Performance Tuning**
+   - **Threads**: Defaults to CPU cores - 1.
+   - **Max CPU Usage**: Recommended at 75% to avoid overheating.
+   - **TLS Encryption**: Recommended for security.
 
-3. **高級選項**
-   - 自動重連：網絡斷開時自動重連
-   - 鎖屏挖礦：屏幕關閉時繼續挖礦（需注意電池消耗）
-   - 重試次數和間隔：連接失敗時的重試策略
+3. **Advanced Options**
+   - Auto-reconnect: Automatically reconnects on network loss.
+   - Background Mining: Continue mining when the screen is off.
 
-### 開始挖礦
+### Start Mining
+1. Click the "Start Mining" button.
+2. The app starts the XMRig process in the background.
+3. The dashboard will show real-time stats.
 
-1. 點擊「開始挖礦」按鈕
-2. 應用會在後台啟動 XMRig 進程
-3. 實時監控面板會顯示：
-   - 當前算力（10s/60s/15m 平均值）
-   - 已接受份額數
-   - 難度值
-   - CPU 使用率（如果可用）
-   - 設備溫度
-   - 電池狀態
+### Stop Mining
+Click the "Stop Mining" button to safely terminate the process.
 
-### 停止挖礦
+## ⚙️ Configuration Details
 
-點擊「停止挖礦」按鈕，應用會安全地終止挖礦進程。
+### Recommended Pools
 
-## ⚙️ 配置說明
-
-### 礦池配置
-
-#### SupportXMR (推薦)
+#### SupportXMR
 ```
 URL: pool.supportxmr.com:3333
-TLS: 建議啟用
-最低支付: 0.1 XMR
+TLS: Recommended
+Min Payout: 0.1 XMR
 ```
 
 #### MoneroOcean
 ```
 URL: gulf.moneroocean.stream:10128
-TLS: 建議啟用
-智能挖礦: 自動切換最有利的幣種
+TLS: Recommended
+Algo-switching: Automatically switches to the most profitable coin.
 ```
 
-### 性能優化建議
+## 📊 Performance Data
 
-1. **設備選擇**
-   - 推薦使用高端 Android 設備（驍龍 8 系列、天璣 9000+ 等）
-   - 至少 4GB RAM
-   - 良好的散熱設計
+Based on actual tests:
 
-2. **環境設置**
-   - 確保設備處於充電狀態
-   - 保持良好的散熱環境
-   - 避免長時間連續挖礦（建議每 2-3 小時休息一次）
-
-3. **參數調優**
-   - CPU 使用率：60-75% 之間較為平衡
-   - 線程數：不建議使用所有核心
-   - 溫度監控：超過 40°C 建議降低線程數或停止挖礦
-
-## 📊 性能數據
-
-基於實際測試數據（日誌記錄）：
-
-### 測試設備
+### Test Device
 - CPU: ARM Cortex-A55 (8 cores)
 - RAM: 5.5 GB
-- 溫度: 30-38°C
+- Temperature: 30-38°C
 
-### 算力表現
-- **平均算力**: 250-350 H/s
-- **峰值算力**: 348 H/s
-- **穩定性**: 良好（10s/60s/15m 波動較小）
+### Hashrate
+- **Average**: 250-350 H/s
+- **Peak**: 348 H/s
+- **Stability**: Good
 
-### 資源佔用
-- **線程數**: 5 個挖礦線程
-- **內存使用**: 約 2.3 GB (RandomX dataset)
-- **Huge Pages**: 0% (Android 限制)
+## 🔧 Known Issues
 
-## 🔧 已知問題
-
-### CPU 使用率監控失敗
+### CPU Monitoring Failure
 ```
 Error: EACCES (Permission denied) reading /proc/stat
 ```
-**原因**: Android 11+ 限制了對 `/proc/stat` 的訪問  
-**狀態**: 已實現，但在新版 Android 上可能無法工作  
-**替代方案**: 可以通過 XMRig 輸出間接判斷 CPU 負載
+**Cause**: Android 11+ restricts access to `/proc/stat`.
+**Status**: Implemented but might not work on newer Android versions.
 
-### 文件權限問題
-早期版本在 `files/` 目錄下無法執行二進制文件。
-**解決方案**: 已改為將 XMRig 編譯為 `.so` 庫並加載到 `lib/` 目錄
-
-### XMRig 配置未加載
-XMRig 默認會嘗試從多個位置讀取配置文件。
-**解決方案**: 在運行時動態生成 `config.json` 並通過命令行參數傳遞
-
-## 🔒 隱私和安全
-
-### 我們不會
-- ❌ 收集任何用戶數據
-- ❌ 上傳挖礦統計到第三方服務器
-- ❌ 包含任何追蹤或分析 SDK
-- ❌ 要求不必要的權限
-
-### 我們會
-- ✅ 設置 donate-level = 1% 支持開發
-- ✅ 開源所有代碼
-- ✅ 使用本地 DataStore 保存配置
-- ✅ 僅請求必要權限（網絡、前台服務、WakeLock）
-
-### 權限說明
-```xml
-<!-- 網絡連接 - 連接礦池必需 -->
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-<!-- 前台服務 - 保持挖礦進程運行 -->
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
-<!-- WakeLock - 保持 CPU 運行 -->
-<uses-permission android:name="android.permission.WAKE_LOCK" />
-
-<!-- 電池信息 - 顯示充電狀態 -->
-<uses-permission android:name="android.permission.BATTERY_STATS" />
-```
-
-## 🐛 問題排查
-
-### 挖礦無法啟動
-
-1. 檢查錢包地址是否正確
-2. 確認網絡連接正常
-3. 查看日誌輸出：
-```
-Logcat 過濾器: tag:MiningWorker OR tag:XMRig
-```
-
-### 算力過低
-
-1. 降低 CPU 使用率限制
-2. 增加線程數
-3. 確保設備沒有過熱降頻
-4. 檢查是否有其他後台應用佔用 CPU
-
-### 頻繁斷線
-
-1. 檢查網絡穩定性
-2. 嘗試更換礦池
-3. 啟用自動重連功能
-4. 增加重試次數和間隔
-
-### 應用崩潰
-
-1. 檢查設備 RAM 是否充足（建議至少 4GB）
-2. 清除應用數據並重新配置
-3. 查看崩潰日誌並提交 Issue
-
-## 🛠️ 開發指南
-
-### 添加新功能
-
-1. **數據模型**：在 `data/model/` 中定義
-2. **倉庫層**：在 `data/repository/` 中實現數據訪問
-3. **UI 狀態**：在對應的 `Contract.kt` 中定義
-4. **ViewModel**：處理業務邏輯和狀態管理
-5. **Composable**：在 `Screen.kt` 中實現 UI
-
-### 修改 XMRig 配置
-
-編輯 `MiningConfig.kt` 中的 `toJson()` 方法：
-```kotlin
-fun toJson(): String {
-    return """
-    {
-        // 在這裡添加或修改 XMRig 配置項
-    }
-    """.trimIndent()
-}
-```
-
-### 添加新的監控指標
-
-1. 在 `MiningWorker.kt` 中添加監控邏輯
-2. 更新 `MiningState` 數據類
-3. 在 UI 中顯示新指標
+### File Permissions
+Earlier versions had issues executing binaries in the `files/` directory.
+**Solution**: XMRig is now compiled as a `.so` library and loaded from `lib/`.
 
 ## 📄 License
-
-本項目採用 MIT License，請參閱 [LICENSE](LICENSE) 文件。
+This project is under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ### XMRig License
-XMRig 採用 GPLv3 許可證，詳見：https://github.com/xmrig/xmrig
+XMRig uses the GPLv3 license: https://github.com/xmrig/xmrig
 
-## 🙏 致謝
-
-- [XMRig](https://github.com/xmrig/xmrig) - 強大的 Monero 挖礦引擎
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) - 現代化的 Android UI 工具包
-- [Koin](https://insert-koin.io/) - 輕量級依賴注入框架
-
-## 🔍 代碼安全檢查
-
-本項目已經過安全檢查，確認：
-- ✅ 無硬編碼的錢包地址
-- ✅ 無 API 密鑰或 Token
-- ✅ 無第三方追蹤代碼
-- ✅ 僅包含默認的礦池地址作為示例（用戶可自行配置）
-
-## 📮 聯繫方式
-
-- **Issues**: 請在 GitHub Issues 中報告問題
-- **Pull Requests**: 歡迎提交 PR 改進項目
-
-## ⚠️ 免責聲明
-
-- 本應用僅供學習和研究使用
-- 長時間挖礦可能導致設備過熱和電池損耗
-- 請確保在允許的情況下使用本應用
-- 挖礦收益受多種因素影響，不保證盈利
-- 使用本應用的一切後果由用戶自行承擔
-
-## 📝 更新日誌
-
-### v1.0.0 (2025-10-31)
-- ✨ 首次發布
-- ✅ 完整的 XMRig 6.21.0 集成
-- ✅ Material Design 3 UI
-- ✅ 實時算力和系統監控
-- ✅ 完整的配置管理
-- ✅ WorkManager 後台任務
-- ✅ DataStore 配置持久化
-
----
-
-**注意**: 這是一個開源項目，我們不對任何使用本應用造成的損失負責。請合理使用，注意設備健康。
+## ⚠️ Disclaimer
+- For educational and research purposes only.
+- Mining can cause device overheating and battery wear.
+- Use responsibly and at your own risk.

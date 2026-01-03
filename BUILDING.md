@@ -2,6 +2,8 @@
 
 This guide explains how to compile XMRig binaries for Android.
 
+[繁體中文](BUILDING_zh-TW.md)
+
 ## Prerequisites
 
 - **Android NDK** r26 or later
