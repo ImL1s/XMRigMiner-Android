@@ -56,14 +56,14 @@
 
       <div class="control-row">
         <div class="control-group">
-          <label for="pool-url">礦池代理 (可輸入自定義)</label>
-          <input type="text" id="pool-url" list="pool-options" placeholder="wss://..."
-            value="wss://ny1.xmrminingproxy.com">
-          <datalist id="pool-options">
-            <option value="wss://ny1.xmrminingproxy.com">XMR Mining Proxy (NY)</option>
-            <option value="wss://de1.xmrminingproxy.com">XMR Mining Proxy (DE)</option>
-            <option value="wss://p1.xmrminingproxy.com">XMR Mining Proxy (Public)</option>
-          </datalist>
+          <label for="pool-select">礦池選擇</label>
+          <select id="pool-select">
+            <option value="moneroocean">🌊 MoneroOcean (自動選幣，推薦)</option>
+            <option value="supportxmr">💪 SupportXMR</option>
+            <option value="hashvault">🔒 HashVault</option>
+            <option value="2miners">⛏️ 2Miners</option>
+            <option value="custom">🔧 自訂代理...</option>
+          </select>
         </div>
         <div class="control-group">
           <label for="threads">執行緒數</label>
@@ -71,6 +71,12 @@
             <option value="1">1 Thread</option>
           </select>
         </div>
+      </div>
+
+      <div class="control-group custom-proxy-group" id="custom-proxy-group" style="display: none;">
+        <label for="custom-proxy-url">WebSocket 代理 URL</label>
+        <input type="text" id="custom-proxy-url" placeholder="ws://localhost:3333 或 wss://...">
+        <small class="hint">自訂代理需支援 Stratum-over-WebSocket 協議</small>
       </div>
 
       <div class="control-group">

@@ -108,9 +108,8 @@ class Miner {
         this.log(`New job received: ID ${job.job_id.substring(0, 8)}, diff ${job.target}`);
 
         // Check if cache needs update (seed changed)
-        // Note: In some setups, seed is provided. If not, we use default or job-specific data.
-        // For RandomX, seed changes roughly every 2048 blocks.
         const seed = job.seed_hash || 'default';
+
         if (seed !== this.currentSeed) {
             this.updateCache(seed);
         }
@@ -121,19 +120,26 @@ class Miner {
         }
 
         // Update all workers with the new job
-        this.workers.forEach(w => {
-            w.postMessage({ type: 'job', data: job });
+        this.workers.forEach((w, idx) => {
+            try {
+                w.postMessage({ type: 'job', data: job });
+            } catch (e) {
+                this.log(`Error sending job to worker ${idx}: ${e.message}`);
+            }
         });
     }
 
-    updateCache(seed) {
-        this.log('Updating RandomX cache for seed: ' + seed.substring(0, 16));
-        this.currentSeed = seed;
+    updateCache(seedHex) {
+        this.log('Updating RandomX cache for seed: ' + seedHex.substring(0, 16));
+        this.currentSeed = seedHex;
+
+        // Convert hex string to Uint8Array (32 bytes for RandomX)
+        const seedBytes = this.hexToBytes(seedHex);
 
         // RandomX init cache
         // We use {shared: true} so multiple workers can use the same memory
         try {
-            this.rxCache = randomx_init_cache(seed, { shared: true });
+            this.rxCache = randomx_init_cache(seedBytes, { shared: true });
 
             // If workers already exist, update them (this implementation recreates them for simplicity)
             if (this.workers.length > 0) {
@@ -143,6 +149,17 @@ class Miner {
         } catch (err) {
             this.log('Cache init error: ' + err.message);
         }
+    }
+
+    /**
+     * Convert hex string to Uint8Array
+     */
+    hexToBytes(hex) {
+        const bytes = new Uint8Array(hex.length / 2);
+        for (let i = 0; i < bytes.length; i++) {
+            bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+        }
+        return bytes;
     }
 
     initWorkers() {
@@ -159,8 +176,25 @@ class Miner {
 
             worker.onmessage = (e) => this.handleWorkerMessage(e.data);
 
+            // Catch worker loading errors
+            worker.onerror = (err) => {
+                this.log(`Worker ${i} error event: type=${err.type}, message=${err.message}, filename=${err.filename}, lineno=${err.lineno}, colno=${err.colno}`);
+                // Try JSON stringify if it's an object
+                try { this.log(`Worker ${i} error details: ${JSON.stringify(err)}`); } catch (e) { }
+            };
+
             // Send cache handle to worker
-            worker.postMessage({ type: 'init', data: this.rxCache.handle });
+            // Send cache handle to worker
+            const h = this.rxCache.handle;
+
+            // Note: DataCloneError diagnosis removed as COOP/COEP fixed it. 
+            // We just send the handle.
+
+            try {
+                worker.postMessage({ type: 'init', data: this.rxCache.handle });
+            } catch (e) {
+                this.log(`PostMessage Error (Worker ${i}): ${e.name} - ${e.message}`);
+            }
             this.workers.push(worker);
         }
     }
@@ -184,12 +218,7 @@ class Miner {
                 this.log('Worker error: ' + msg.message);
                 break;
             case 'initialized':
-                // Worker is ready for jobs
-                if (this.stats.currentJob) {
-                    // Send current job if we already have one
-                    const workerIndex = this.workers.findIndex(w => w.readyState === undefined); // Not really a state, just logic
-                    // Just send to the one who responded
-                }
+                this.log('Worker initialized successfully');
                 break;
         }
     }

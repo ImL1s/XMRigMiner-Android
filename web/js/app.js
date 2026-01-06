@@ -10,7 +10,9 @@ class App {
         this.miner = new Miner();
         this.dom = {
             walletAddress: document.getElementById('wallet-address'),
-            pool: document.getElementById('pool-url'), // Updated ID
+            poolSelect: document.getElementById('pool-select'),
+            customProxyGroup: document.getElementById('custom-proxy-group'),
+            customProxyUrl: document.getElementById('custom-proxy-url'),
             threads: document.getElementById('threads'),
             workerName: document.getElementById('worker-name'),
             startBtn: document.getElementById('start-btn'),
@@ -34,6 +36,9 @@ class App {
         this.dom.startBtn.addEventListener('click', () => this.startMining());
         this.dom.stopBtn.addEventListener('click', () => this.stopMining());
 
+        // 綁定礦池選擇變更事件
+        this.dom.poolSelect.addEventListener('change', () => this.onPoolSelectChange());
+
         // 渲染線程數選項
         this.renderThreadOptions();
 
@@ -41,13 +46,22 @@ class App {
         this.miner.onLog = (msg) => this.log(msg);
         this.miner.onStatsUpdate = (stats) => this.updateUI(stats);
 
-        this.log('Web Miner 就緒 (支援自訂代理)');
+        // 初始化自訂代理顯示狀態
+        this.onPoolSelectChange();
+
+        this.log('Web Miner 就緒 (支援多礦池選擇)');
+    }
+
+    onPoolSelectChange() {
+        const isCustom = this.dom.poolSelect.value === 'custom';
+        this.dom.customProxyGroup.style.display = isCustom ? 'block' : 'none';
     }
 
     loadSettings() {
         const settings = JSON.parse(localStorage.getItem('xmrig_web_settings') || '{}');
         if (settings.walletAddress) this.dom.walletAddress.value = settings.walletAddress;
-        if (settings.pool) this.dom.pool.value = settings.pool;
+        if (settings.poolSelect) this.dom.poolSelect.value = settings.poolSelect;
+        if (settings.customProxyUrl) this.dom.customProxyUrl.value = settings.customProxyUrl;
         if (settings.threads) this.dom.threads.value = settings.threads;
         if (settings.workerName) this.dom.workerName.value = settings.workerName;
     }
@@ -55,7 +69,8 @@ class App {
     saveSettings() {
         const settings = {
             walletAddress: this.dom.walletAddress.value,
-            pool: this.dom.pool.value,
+            poolSelect: this.dom.poolSelect.value,
+            customProxyUrl: this.dom.customProxyUrl.value,
             threads: this.dom.threads.value,
             workerName: this.dom.workerName.value
         };
@@ -75,12 +90,27 @@ class App {
     }
 
     startMining() {
+        const poolSelection = this.dom.poolSelect.value;
+        const isCustomProxy = poolSelection === 'custom';
+
+        // Determine proxy URL and pool key
+        let proxyUrl, poolKey;
+        if (isCustomProxy) {
+            proxyUrl = this.dom.customProxyUrl.value.trim();
+            poolKey = null; // Custom proxy handles its own pool
+        } else {
+            // Use local proxy with pool selection
+            proxyUrl = 'ws://localhost:3333';
+            poolKey = poolSelection;
+        }
+
         const config = {
             walletAddress: this.dom.walletAddress.value.trim(),
-            pool: this.dom.pool.value, // Used for display/log if needed
+            pool: poolKey, // Pool key for server.js to route
             threads: parseInt(this.dom.threads.value),
             workerName: this.dom.workerName.value.trim() || 'web-worker',
-            proxy: this.dom.pool.value.trim() || 'wss://ny1.xmrminingproxy.com' // Use the input value
+            password: this.dom.workerName.value.trim() || 'x',
+            proxy: proxyUrl
         };
 
         if (!config.walletAddress) {
@@ -88,18 +118,20 @@ class App {
             return;
         }
 
-        if (!config.proxy.startsWith('wss://')) {
-            alert('代理地址必須以 wss:// 開頭 (例如: wss://ny1.xmrminingproxy.com)');
+        if (!config.proxy.startsWith('ws://') && !config.proxy.startsWith('wss://')) {
+            alert('代理地址必須以 ws:// 或 wss:// 開頭');
             return;
         }
 
         this.saveSettings();
+        this.log(`使用礦池: ${isCustomProxy ? '自訂代理' : poolSelection}`);
         this.miner.start(config);
 
         this.dom.startBtn.disabled = true;
         this.dom.stopBtn.disabled = false;
         this.dom.walletAddress.readOnly = true;
-        this.dom.pool.disabled = true;
+        this.dom.poolSelect.disabled = true;
+        this.dom.customProxyUrl.disabled = true;
         this.dom.threads.disabled = true;
     }
 
@@ -109,7 +141,8 @@ class App {
         this.dom.startBtn.disabled = false;
         this.dom.stopBtn.disabled = true;
         this.dom.walletAddress.readOnly = false;
-        this.dom.pool.disabled = false;
+        this.dom.poolSelect.disabled = false;
+        this.dom.customProxyUrl.disabled = false;
         this.dom.threads.disabled = false;
     }
 

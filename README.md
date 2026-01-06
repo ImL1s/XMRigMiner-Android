@@ -1,9 +1,11 @@
-# XMRig Miner for Android
+# XMRig Miner (Android + Web)
 
-[![Android CI/CD](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml/badge.svg)](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml)
+[![Android CI/CD](https://github.com/ImL1s/xmrig-android/actions/workflows/release.yml/badge.svg)](https://github.com/ImL1s/xmrig-android/actions/workflows/release.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-A full-featured Android Monero (XMR) mining application based on XMRig 6.21.0 core engine, featuring a modern Material Design 3 interface built with Jetpack Compose.
+A **cross-platform** Monero (XMR) mining solution:
+- **📱 Android App**: Native Android miner based on XMRig 6.21.0 with Material Design 3 UI.
+- **🌐 Web Miner**: Browser-based miner using RandomX.js (WebAssembly), works on any platform.
 
 [繁體中文](README_zh-TW.md)
 
@@ -39,6 +41,37 @@ A full-featured Android Monero (XMR) mining application based on XMRig 6.21.0 co
 - 🔒 **Developer Donation** - donate-level = 1% to support the developer.
 - 🔐 **Privacy Protection** - No user data collection.
 - 🛡️ **Open Source & Transparent** - Full source code available.
+
+---
+
+## 🌐 Web Miner (New!)
+
+Mine Monero directly in your browser - no installation required!
+
+### Features
+- **Pure JavaScript + WebAssembly** - Uses `randomx.js` for native-like performance.
+- **Multi-Pool Support** - MoneroOcean, SupportXMR, HashVault, 2Miners.
+- **Dynamic Pool Selection** - Switch pools without restarting.
+- **Real-time Stats** - Hashrate, shares, uptime display.
+
+### Quick Start (Web Miner)
+```bash
+# 1. Start the WebSocket-to-Stratum proxy
+cd web/proxy && node server.js
+
+# 2. Start the Vite dev server
+cd web && npm run dev
+
+# 3. Open http://localhost:5173
+```
+
+### Expected Performance
+- **Desktop Browser**: ~40-80 H/s (varies by CPU)
+- **Mobile Browser**: ~10-30 H/s
+
+> ⚠️ **Note**: Web mining has lower hashrate compared to native apps due to browser sandboxing.
+
+---
 
 ### Developer Donation
 This application has a 1% donation level to support continuous maintenance and improvement.

@@ -16,10 +16,11 @@ self.onmessage = async (e) => {
         case 'init':
             // data is cache handle
             try {
+                if (!data) throw new Error("Data is null");
                 randomxNode = randomx_create_vm(data);
                 self.postMessage({ type: 'initialized' });
             } catch (err) {
-                self.postMessage({ type: 'error', message: 'Failed to create RandomX VM: ' + err.message });
+                self.postMessage({ type: 'error', message: 'Failed to create RandomX VM: ' + err.message + ' stack: ' + err.stack });
             }
             break;
 
@@ -49,59 +50,54 @@ function startMining() {
     if (!randomxNode || !currentJob || !isMining) return;
 
     const { blob, target, job_id } = currentJob;
-    const blobBuffer = hexToUint8Array(blob);
-    const targetValue = parseInt(target, 16);
 
-    // We need to iterate nonces
-    // In Stratum, the blob contains a space for nonce (usually 4 bytes at a specific offset)
-    // However, some pools/proxies handle the nonce offset differently.
-    // For simplicity in this implementation, we'll try to find a valid nonce.
+    try {
+        const blobBuffer = hexToUint8Array(blob);
+        // target is hex string
 
-    let nonce = Math.floor(Math.random() * 0xFFFFFFFF);
-    let hashesDone = 0;
-    const batchSize = 1; // RandomX is slow, do 1 by 1 to keep responsiveness
+        let nonce = Math.floor(Math.random() * 0xFFFFFFFF);
+        let hashesDone = 0;
+        const batchSize = 1;
 
-    const runBatch = () => {
-        if (!isMining || currentJob.job_id !== job_id) return;
+        const runBatch = () => {
+            if (!isMining || currentJob.job_id !== job_id) return;
 
-        for (let i = 0; i < batchSize; i++) {
-            const currentNonce = (nonce + i) % 0xFFFFFFFF;
+            try {
+                for (let i = 0; i < batchSize; i++) {
+                    const currentNonce = (nonce + i) % 0xFFFFFFFF;
+                    const workBlob = new Uint8Array(blobBuffer);
+                    const view = new DataView(workBlob.buffer);
+                    view.setUint32(39, currentNonce, true);
 
-            // Insert nonce into blob
-            // Stratum Monero blob usually has nonce at offset 39
-            const workBlob = new Uint8Array(blobBuffer);
-            const view = new DataView(workBlob.buffer);
-            view.setUint32(39, currentNonce, true); // Little endian
+                    const result = randomxNode.calculate_hash(workBlob);
+                    hashesDone++;
 
-            const result = randomxNode.calculate_hash(workBlob);
-            hashesDone++;
+                    if (checkDifficulty(result, target)) {
+                        self.postMessage({
+                            type: 'result',
+                            job_id: job_id,
+                            nonce: uint32ToHex(currentNonce),
+                            result: uint8ArrayToHex(result)
+                        });
+                    }
+                }
+                nonce += batchSize;
 
-            // Check against target
-            // result is Uint8Array[32] (256-bit hash)
-            // Monero difficulty check: hash < target
-            if (checkDifficulty(result, target)) {
-                self.postMessage({
-                    type: 'result',
-                    job_id: job_id,
-                    nonce: uint32ToHex(currentNonce),
-                    result: uint8ArrayToHex(result)
-                });
+                if (hashesDone >= 5) {
+                    self.postMessage({ type: 'hashrate', count: hashesDone });
+                    hashesDone = 0;
+                }
+
+                setTimeout(runBatch, 0);
+            } catch (err) {
+                self.postMessage({ type: 'error', message: 'Error in runBatch: ' + err.message });
             }
-        }
+        };
 
-        nonce += batchSize;
-
-        // Report hashrate progress
-        if (hashesDone >= 5) {
-            self.postMessage({ type: 'hashrate', count: hashesDone });
-            hashesDone = 0;
-        }
-
-        // Use setTimeout to yield and allow control messages
-        setTimeout(runBatch, 0);
-    };
-
-    runBatch();
+        runBatch();
+    } catch (err) {
+        self.postMessage({ type: 'error', message: 'Error in startMining: ' + err.message });
+    }
 }
 
 /**

@@ -1,9 +1,11 @@
-# XMRig Miner for Android
+# XMRig Miner (Android + Web)
 
-[![Android CI/CD](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml/badge.svg)](https://github.com/ImL1s/XMRigMiner-Android/actions/workflows/release.yml)
+[![Android CI/CD](https://github.com/ImL1s/xmrig-android/actions/workflows/release.yml/badge.svg)](https://github.com/ImL1s/xmrig-android/actions/workflows/release.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-一個功能完整的 Android Monero (XMR) 挖礦應用，基於 XMRig 6.21.0 核心引擎，採用 Jetpack Compose 構建的現代化 Material Design 3 界面。
+**跨平台** Monero (XMR) 挖礦方案：
+- **📱 Android 應用**: 基於 XMRig 6.21.0 的原生 Android 礦機，Material Design 3 介面。
+- **🌐 網頁礦機 (New!)**: 基於 RandomX.js (WebAssembly) 的瀏覽器礦機，支援任何平台。
 
 [English](README.md)
 
@@ -39,6 +41,37 @@
 - 🔒 **開發者捐贈** - donate-level = 1% 用於支持開發者
 - 🔐 **隱私保護** - 不收集任何用戶數據
 - 🛡️ **開源透明** - 完整源代碼公開
+
+---
+
+## 🌐 網頁礦機 (New!)
+
+直接在瀏覽器中挖礦 Monero - 無需安裝任何軟體！
+
+### 功能特點
+- **純 JavaScript + WebAssembly** - 使用 `randomx.js` 實現接近原生的效能
+- **多礦池支援** - MoneroOcean, SupportXMR, HashVault, 2Miners
+- **動態礦池切換** - 無需重啟即可切換礦池
+- **即時統計** - 算力、份額、運行時間即時顯示
+
+### 快速開始 (網頁礦機)
+```bash
+# 1. 啟動 WebSocket-to-Stratum 代理
+cd web/proxy && node server.js
+
+# 2. 啟動 Vite 開發伺服器
+cd web && npm run dev
+
+# 3. 開啟 http://localhost:5173
+```
+
+### 預期效能
+- **桌面瀏覽器**: ~40-80 H/s (依 CPU 而定)
+- **行動瀏覽器**: ~10-30 H/s
+
+> ⚠️ **注意**: 網頁挖礦的算力比原生應用低，因瀏覽器沙箱限制所致。
+
+---
 
 ### 開發者捐贈
 本應用設置了 1% 的捐贈級別，用於支持開發者持續維護和改進此項目。

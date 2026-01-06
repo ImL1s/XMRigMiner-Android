@@ -89,7 +89,8 @@ class PoolProxy {
             login: config.walletAddress,
             pass: config.password || "x",
             agent: "xmrig-web-miner/1.0",
-            algo: "rx/0" // RandomX (string usually safer)
+            algo: "rx/0", // RandomX
+            pool: config.pool || "supportxmr" // Pool selection for proxy
         });
     }
 
