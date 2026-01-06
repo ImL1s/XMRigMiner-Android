@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <meta name="description" content="Browser-based Monero (XMR) miner using RandomX algorithm">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <div class="container">
     <!-- Header -->
@@ -47,79 +49,73 @@
     <!-- Configuration Card -->
     <div class="card config-card">
       <h2>⚙️ 設定</h2>
-      
-      <div class="form-group">
-        <label for="walletAddress">錢包地址</label>
-        <input 
-          type="text" 
-          id="walletAddress" 
-          placeholder="輸入你的 Monero 錢包地址 (4...)"
-          autocomplete="off"
-        >
+      <div class="control-group">
+        <label for="wallet-address">Monero 錢包地址</label>
+        <input type="text" id="wallet-address" placeholder="4..." spellcheck="false">
       </div>
 
-      <div class="form-group">
-        <label for="poolSelect">礦池</label>
-        <select id="poolSelect">
-          <option value="gulf.moneroocean.stream:10128">MoneroOcean (推薦)</option>
-          <option value="pool.supportxmr.com:3333">SupportXMR</option>
-          <option value="xmr.nanopool.org:14444">Nanopool</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="threadsSlider">
-          CPU 執行緒: <span id="threadsValue">1</span>
-        </label>
-        <input 
-          type="range" 
-          id="threadsSlider" 
-          min="1" 
-          max="4" 
-          value="1"
-        >
-        <div class="slider-labels">
-          <span>1</span>
-          <span>4</span>
+      <div class="control-row">
+        <div class="control-group">
+          <label for="pool-url">礦池代理 (可輸入自定義)</label>
+          <input type="text" id="pool-url" list="pool-options" placeholder="wss://..."
+            value="wss://ny1.xmrminingproxy.com">
+          <datalist id="pool-options">
+            <option value="wss://ny1.xmrminingproxy.com">XMR Mining Proxy (NY)</option>
+            <option value="wss://de1.xmrminingproxy.com">XMR Mining Proxy (DE)</option>
+            <option value="wss://p1.xmrminingproxy.com">XMR Mining Proxy (Public)</option>
+          </datalist>
+        </div>
+        <div class="control-group">
+          <label for="threads">執行緒數</label>
+          <select id="threads">
+            <option value="1">1 Thread</option>
+          </select>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="workerName">礦工名稱 (可選)</label>
-        <input 
-          type="text" 
-          id="workerName" 
-          placeholder="web-miner"
-          value="web-miner"
-        >
+      <div class="control-group">
+        <label for="worker-name">礦工名稱 (可選)</label>
+        <input type="text" id="worker-name" placeholder="web-worker">
+      </div>
+
+      <div class="actions">
+        <button id="start-btn" class="btn btn-primary">開始挖礦</button>
+        <button id="stop-btn" class="btn btn-secondary" disabled>停止</button>
       </div>
     </div>
 
-    <!-- Control Buttons -->
-    <div class="controls">
-      <button class="btn btn-primary" id="startBtn">
-        <span class="btn-icon">▶️</span>
-        開始挖礦
-      </button>
-      <button class="btn btn-secondary" id="stopBtn" disabled>
-        <span class="btn-icon">⏹️</span>
-        停止
-      </button>
+    <div class="stats-panel">
+      <div class="stat-card">
+        <div class="stat-label">當前算力</div>
+        <div class="stat-value"><span id="hashrate">0.0</span> H/s</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">已計算 Hashes</div>
+        <div class="stat-value" id="hashes">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Shares (接受/拒絕)</div>
+        <div class="stat-value" id="shares">0 / 0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">運行時間</div>
+        <div class="stat-value" id="uptime">00:00:00</div>
+      </div>
     </div>
 
-    <!-- Log Card -->
-    <div class="card log-card">
-      <h2>📋 日誌</h2>
-      <div class="log-container" id="logContainer">
-        <div class="log-entry info">歡迎使用 XMRig Web Miner</div>
-        <div class="log-entry warning">⚠️ 網頁挖礦效能較低，僅供展示用途</div>
-      </div>
+    <div class="cpu-meter">
+      <div class="cpu-progress" id="cpu-usage" style="width: 0%"></div>
+    </div>
+
+    <div class="console">
+      <div class="console-header">系統日誌</div>
+      <div id="console-output" class="console-content"></div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
       <p>
-        基於 <a href="https://github.com/l1mey112/randomx.js" target="_blank">randomx.js</a> | 
+        基於 <a href="https://github.com/l1mey112/randomx.js" target="_blank">randomx.js</a> |
         <a href="https://github.com/ImL1s/xmrig-android" target="_blank">GitHub</a>
       </p>
       <p class="disclaimer">
@@ -130,4 +126,5 @@
 
   <script type="module" src="/js/app.js"></script>
 </body>
+
 </html>

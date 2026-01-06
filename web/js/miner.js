@@ -1,207 +1,226 @@
 /**
- * XMRig Web Miner - Mining Controller
- * Uses randomx.js for RandomX hash calculation
+ * XMRig Web Miner - Core Miner Controller
+ * Manages mining workers and pool connection.
  */
+
+import { randomx_init_cache } from './lib/randomx.js';
+import PoolProxy from './pool-proxy.js';
 
 class Miner {
     constructor() {
-        this.isRunning = false;
-        this.hashCount = 0;
-        this.startTime = null;
-        this.threads = 1;
-        this.hashrate = 0;
-        this.acceptedShares = 0;
-        this.rejectedShares = 0;
         this.workers = [];
-        this.onHashrateUpdate = null;
-        this.onLog = null;
-        this.onShareAccepted = null;
-        this.onShareRejected = null;
+        this.proxy = new PoolProxy();
+        this.config = null;
+        this.isMining = false;
 
-        // RandomX 參數
-        this.dataset = null;
-        this.cache = null;
-        this.vm = null;
-        this.randomxLoaded = false;
-    }
-
-    /**
-     * 初始化 RandomX
-     */
-    async init() {
-        try {
-            this.log('info', '正在載入 randomx.js...');
-
-            // 動態導入 randomx.js
-            // 注意：實際使用時需要安裝 npm 套件
-            // import { RandomX } from 'randomx.js';
-
-            // 模擬初始化（實際需要 randomx.js 套件）
-            this.log('info', 'RandomX 引擎已就緒 (模擬模式)');
-            this.log('warning', '⚠️ 這是展示版本，未連接真實礦池');
-            this.randomxLoaded = true;
-
-            return true;
-        } catch (error) {
-            this.log('error', `初始化失敗: ${error.message}`);
-            return false;
-        }
-    }
-
-    /**
-     * 開始挖礦
-     */
-    async start(config) {
-        if (this.isRunning) {
-            this.log('warning', '挖礦已在運行中');
-            return false;
-        }
-
-        const { walletAddress, pool, threads, workerName } = config;
-
-        if (!walletAddress || walletAddress.length < 95) {
-            this.log('error', '請輸入有效的 Monero 錢包地址');
-            return false;
-        }
-
-        this.threads = threads || 1;
-        this.isRunning = true;
-        this.startTime = Date.now();
-        this.hashCount = 0;
-
-        this.log('info', `開始挖礦...`);
-        this.log('info', `礦池: ${pool}`);
-        this.log('info', `執行緒數: ${this.threads}`);
-        this.log('info', `礦工名稱: ${workerName}`);
-
-        // 啟動挖礦循環
-        this.startMiningLoop();
-
-        return true;
-    }
-
-    /**
-     * 挖礦主循環
-     */
-    startMiningLoop() {
-        const mineIteration = () => {
-            if (!this.isRunning) return;
-
-            // 模擬挖礦計算
-            // 實際需要使用 randomx.js 的 calculateHash
-            for (let i = 0; i < this.threads; i++) {
-                this.simulateHash();
-            }
-
-            // 更新算力
-            this.updateHashrate();
-
-            // 繼續下一輪
-            if (this.isRunning) {
-                setTimeout(mineIteration, 100);
-            }
+        this.stats = {
+            hashrate: 0,
+            totalHashes: 0,
+            acceptedShares: 0,
+            rejectedShares: 0,
+            startTime: null,
+            uptime: 0,
+            currentJob: null
         };
 
-        mineIteration();
+        this.onLog = null;
+        this.onStatsUpdate = null;
+        this.hashCount = 0;
+        this.lastStatsTime = null;
+
+        // RandomX Cache (shared among workers)
+        this.rxCache = null;
+        this.currentSeed = null;
+
+        // Initialize proxy callbacks
+        this.setupProxyHandlers();
+    }
+
+    setupProxyHandlers() {
+        this.proxy.onOpen = () => this.log('Connected to pool proxy');
+        this.proxy.onClose = () => {
+            this.log('Pool connection closed');
+            this.stop();
+        };
+        this.proxy.onError = (err) => this.log('Proxy error: ' + err.message);
+
+        this.proxy.onJob = (job) => {
+            this.stats.currentJob = job;
+            this.handleJob(job);
+        };
+
+        this.proxy.onAccepted = () => {
+            this.stats.acceptedShares++;
+            this.log('Share accepted!');
+            this.updateStats();
+        };
+
+        this.proxy.onRejected = (reason) => {
+            this.stats.rejectedShares++;
+            this.log('Share rejected: ' + reason);
+            this.updateStats();
+        };
     }
 
     /**
-     * 模擬 hash 計算（展示用）
+     * 啟動挖礦
      */
-    simulateHash() {
-        // 模擬一些計算
-        let result = 0;
-        for (let i = 0; i < 1000; i++) {
-            result += Math.random();
-        }
-        this.hashCount++;
+    start(config) {
+        if (this.isMining) return;
 
-        // 隨機模擬找到 share
-        if (Math.random() < 0.001) {
-            this.acceptedShares++;
-            if (this.onShareAccepted) {
-                this.onShareAccepted(this.acceptedShares);
-            }
-            this.log('success', `✓ Share 已接受 #${this.acceptedShares}`);
-        }
-    }
+        this.config = config;
+        this.isMining = true;
+        this.stats.startTime = Date.now();
+        this.stats.totalHashes = 0;
+        this.hashCount = 0;
+        this.lastStatsTime = Date.now();
 
-    /**
-     * 更新算力統計
-     */
-    updateHashrate() {
-        const elapsed = (Date.now() - this.startTime) / 1000;
-        if (elapsed > 0) {
-            // 模擬約 15-25 H/s 的算力（符合 randomx.js 的實際效能）
-            this.hashrate = (15 + Math.random() * 10) * this.threads;
+        this.log(`Starting mining for wallet: ${config.walletAddress.substring(0, 8)}...`);
+        this.log(`Pool: ${config.pool}`);
+        this.log(`Threads: ${config.threads}`);
 
-            if (this.onHashrateUpdate) {
-                this.onHashrateUpdate(this.hashrate);
-            }
-        }
+        // Default proxy if none provided
+        const proxyUrl = config.proxy || 'wss://ny1.xmrminingproxy.com';
+        this.proxy.connect(proxyUrl, config);
+
+        this.startStatsTimer();
     }
 
     /**
      * 停止挖礦
      */
     stop() {
-        if (!this.isRunning) {
-            return false;
+        if (!this.isMining) return;
+
+        this.isMining = false;
+        this.proxy.disconnect();
+        this.terminateWorkers();
+        this.log('Mining stopped');
+
+        if (this.statsTimer) clearInterval(this.statsTimer);
+        this.updateStats();
+    }
+
+    /**
+     * 處理新 Job
+     */
+    handleJob(job) {
+        this.log(`New job received: ID ${job.job_id.substring(0, 8)}, diff ${job.target}`);
+
+        // Check if cache needs update (seed changed)
+        // Note: In some setups, seed is provided. If not, we use default or job-specific data.
+        // For RandomX, seed changes roughly every 2048 blocks.
+        const seed = job.seed_hash || 'default';
+        if (seed !== this.currentSeed) {
+            this.updateCache(seed);
         }
 
-        this.isRunning = false;
-        this.log('info', '挖礦已停止');
+        // Initialize workers if needed
+        if (this.workers.length === 0) {
+            this.initWorkers();
+        }
 
-        // 清理 workers
-        this.workers.forEach(worker => worker.terminate());
+        // Update all workers with the new job
+        this.workers.forEach(w => {
+            w.postMessage({ type: 'job', data: job });
+        });
+    }
+
+    updateCache(seed) {
+        this.log('Updating RandomX cache for seed: ' + seed.substring(0, 16));
+        this.currentSeed = seed;
+
+        // RandomX init cache
+        // We use {shared: true} so multiple workers can use the same memory
+        try {
+            this.rxCache = randomx_init_cache(seed, { shared: true });
+
+            // If workers already exist, update them (this implementation recreates them for simplicity)
+            if (this.workers.length > 0) {
+                this.terminateWorkers();
+                this.initWorkers();
+            }
+        } catch (err) {
+            this.log('Cache init error: ' + err.message);
+        }
+    }
+
+    initWorkers() {
+        if (!this.rxCache) return;
+
+        const count = this.config.threads || 1;
+        this.log(`Initializing ${count} workers...`);
+
+        for (let i = 0; i < count; i++) {
+            // In Vite, we import worker using new URL syntax
+            const worker = new Worker(new URL('./worker.js', import.meta.url), {
+                type: 'module'
+            });
+
+            worker.onmessage = (e) => this.handleWorkerMessage(e.data);
+
+            // Send cache handle to worker
+            worker.postMessage({ type: 'init', data: this.rxCache.handle });
+            this.workers.push(worker);
+        }
+    }
+
+    terminateWorkers() {
+        this.workers.forEach(w => w.terminate());
         this.workers = [];
-
-        return true;
     }
 
-    /**
-     * 獲取運行時間
-     */
-    getUptime() {
-        if (!this.startTime) return 0;
-        return Math.floor((Date.now() - this.startTime) / 1000);
-    }
-
-    /**
-     * 格式化運行時間
-     */
-    formatUptime(seconds) {
-        const h = Math.floor(seconds / 3600);
-        const m = Math.floor((seconds % 3600) / 60);
-        const s = seconds % 60;
-        return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-    }
-
-    /**
-     * 日誌輸出
-     */
-    log(level, message) {
-        const timestamp = new Date().toLocaleTimeString();
-        console.log(`[${timestamp}] [${level.toUpperCase()}] ${message}`);
-
-        if (this.onLog) {
-            this.onLog(level, message);
+    handleWorkerMessage(msg) {
+        switch (msg.type) {
+            case 'hashrate':
+                this.hashCount += msg.count;
+                this.stats.totalHashes += msg.count;
+                break;
+            case 'result':
+                this.log(`Found Share! Nonce: ${msg.nonce}`);
+                this.proxy.submit(msg.job_id, msg.nonce, msg.result);
+                break;
+            case 'error':
+                this.log('Worker error: ' + msg.message);
+                break;
+            case 'initialized':
+                // Worker is ready for jobs
+                if (this.stats.currentJob) {
+                    // Send current job if we already have one
+                    const workerIndex = this.workers.findIndex(w => w.readyState === undefined); // Not really a state, just logic
+                    // Just send to the one who responded
+                }
+                break;
         }
     }
 
-    /**
-     * 獲取統計信息
-     */
-    getStats() {
-        return {
-            isRunning: this.isRunning,
-            hashrate: this.hashrate,
-            hashCount: this.hashCount,
-            acceptedShares: this.acceptedShares,
-            rejectedShares: this.rejectedShares,
-            uptime: this.getUptime(),
-            threads: this.threads
-        };
+    startStatsTimer() {
+        this.statsTimer = setInterval(() => {
+            const now = Date.now();
+            const elapsed = (now - this.lastStatsTime) / 1000;
+
+            if (elapsed > 0) {
+                this.stats.hashrate = this.hashCount / elapsed;
+                this.hashCount = 0;
+                this.lastStatsTime = now;
+                this.stats.uptime = Math.floor((now - this.stats.startTime) / 1000);
+            }
+
+            this.stats.isMining = this.isMining;
+            this.updateStats();
+        }, 2000);
+    }
+
+    updateStats() {
+        if (this.onStatsUpdate) {
+            this.onStatsUpdate(this.stats);
+        }
+    }
+
+    log(message) {
+        if (this.onLog) {
+            this.onLog(`[Miner] ${message}`);
+        }
     }
 }
 
