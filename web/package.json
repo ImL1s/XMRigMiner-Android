@@ -1,0 +1,15 @@
+{
+  "name": "xmrig-web-miner",
+  "version": "1.0.0",
+  "description": "Browser-based RandomX miner using randomx.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
