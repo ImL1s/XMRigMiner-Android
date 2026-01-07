@@ -17,6 +17,13 @@ echo "=== Building XMRig $XMRIG_VERSION for iOS ==="
 # Create directories
 mkdir -p "$BUILD_DIR" "$OUTPUT_DIR"
 
+# Paths to dependencies
+LIBS_DIR="$ROOT_DIR/libs"
+TOOLCHAIN="$LIBS_DIR/ios-cmake/ios.toolchain.cmake"
+UV_DIR="$LIBS_DIR/libuv-1.48.0"
+UV_LIB="$UV_DIR/build-ios/libuv.a"
+UV_INC="$UV_DIR/include"
+
 # Download XMRig if not exists
 if [ ! -d "$BUILD_DIR/xmrig-$XMRIG_VERSION" ]; then
     echo "Downloading XMRig $XMRIG_VERSION..."
@@ -28,36 +35,43 @@ fi
 XMRIG_SRC="$BUILD_DIR/xmrig-$XMRIG_VERSION"
 
 # iOS arm64 build
-echo "Building for iOS arm64..."
+echo "Building for iOS arm64 with ios-cmake..."
 mkdir -p "$BUILD_DIR/ios-arm64"
 cd "$BUILD_DIR/ios-arm64"
 
 cmake "$XMRIG_SRC" \
-    -DCMAKE_SYSTEM_NAME=iOS \
-    -DCMAKE_OSX_ARCHITECTURES=arm64 \
-    -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 \
+    -DCMAKE_TOOLCHAIN_FILE="$TOOLCHAIN" \
+    -DPLATFORM=OS64 \
+    -DCMAKE_SYSTEM_PROCESSOR=arm64 \
+    -DARM_V8=ON \
     -DCMAKE_BUILD_TYPE=Release \
     -DWITH_OPENCL=OFF \
     -DWITH_CUDA=OFF \
     -DWITH_HWLOC=OFF \
     -DWITH_HTTP=OFF \
     -DWITH_TLS=OFF \
-    -DWITH_ASM=ON \
+    -DWITH_ASM=OFF \
     -DBUILD_STATIC=ON \
+    -DUV_LIBRARY="$UV_LIB" \
+    -DUV_INCLUDE_DIR="$UV_INC" \
     -DCMAKE_C_FLAGS="-fembed-bitcode" \
     -DCMAKE_CXX_FLAGS="-fembed-bitcode"
 
 make -j$(sysctl -n hw.ncpu)
 
 # Create static library
-echo "Creating static library..."
-ar rcs "$OUTPUT_DIR/libxmrig-ios-arm64.a" \
-    src/CMakeFiles/xmrig.dir/**/*.o \
-    src/crypto/CMakeFiles/*.dir/**/*.o 2>/dev/null || true
+echo "Creating combined static library with libtool..."
+XMRIG_LIB="$BUILD_DIR/ios-arm64/libxmrig-notls.a"
+ARGON2_LIB="$BUILD_DIR/ios-arm64/src/3rdparty/argon2/libargon2.a"
+GHOSTRIDER_LIB="$BUILD_DIR/ios-arm64/src/crypto/ghostrider/libghostrider.a"
+ETHASH_LIB="$BUILD_DIR/ios-arm64/src/3rdparty/libethash/libethash.a"
+
+libtool -static -o "$OUTPUT_DIR/libxmrig-ios-arm64.a" \
+    "$XMRIG_LIB" \
+    "$ARGON2_LIB" \
+    "$GHOSTRIDER_LIB" \
+    "$ETHASH_LIB" \
+    "$UV_LIB"
 
 echo "=== Build Complete ==="
 echo "Output: $OUTPUT_DIR/libxmrig-ios-arm64.a"
-echo ""
-echo "Next steps:"
-echo "1. Create xcframework with: xcodebuild -create-xcframework ..."
-echo "2. Add to Xcode project"

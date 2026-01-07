@@ -1,0 +1,7 @@
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/uv_a.dir
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/edit_cache.dir
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/rebuild_cache.dir
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/list_install_components.dir
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/install.dir
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/install/local.dir
+/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/install/strip.dir

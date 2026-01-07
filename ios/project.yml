@@ -42,6 +42,9 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         ONLY_ACTIVE_ARCH: NO
         ENABLE_BITCODE: NO
+        OTHER_LDFLAGS:
+          - "-lxmrig-ios-arm64"
+          - "-lc++"
         ARCHS: arm64
         VALID_ARCHS: arm64
     info:

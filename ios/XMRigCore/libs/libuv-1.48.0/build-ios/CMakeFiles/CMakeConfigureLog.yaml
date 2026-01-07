@@ -1,0 +1,1317 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:10 (project)"
+    message: |
+      The target system is: iOS - 26.1 - aarch64
+      The host system is: Darwin - 25.2.0 - arm64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:10 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang 
+      Build flags: -target;arm64-apple-ios13.0;-fvisibility=hidden;-fvisibility-inlines-hidden;-target;arm64-apple-ios13.0;-fvisibility=hidden;-fvisibility-inlines-hidden
+      Id flags: -c;--target=arm64-apple-ios13.0 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is AppleClang, found in:
+        /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:10 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_edffb/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_edffb.dir/build.make CMakeFiles/cmTC_edffb.dir/build
+        Building C object CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0   -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -v -Wl,-v -MD -MT CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        Apple clang version 17.0.0 (clang-1700.4.4.1)
+        Target: arm64-apple-ios13.0
+        Thread model: posix
+        InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+        clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-ios13.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.1 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-a7 -target-feature +zcm -target-feature +zcz -target-feature +v8a -target-feature +aes -target-feature +fp-armv8 -target-feature +neon -target-feature +perfmon -target-feature +sha2 -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx -target-linker-version 1230.1 -v -fcoverage-compilation-dir=/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -fvisibility=hidden -fvisibility-inlines-hidden -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 17.0.0 (clang-1700.4.4.1) default target arm64-apple-darwin25.2.0
+        ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/local/include"
+        ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/Library/Frameworks"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include
+         /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include
+         /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
+         /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/Frameworks (framework directory)
+         /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/SubFrameworks (framework directory)
+        End of search list.
+        Linking C static library libcmTC_edffb.a
+        /opt/homebrew/bin/cmake -P CMakeFiles/cmTC_edffb.dir/cmake_clean_target.cmake
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_edffb.dir/link.txt --verbose=1
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_edffb.a CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:10 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+          add: [/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include]
+          add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        end of search list found
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include]
+        collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        implicit include dirs: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include;/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:10 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        ignore line: [Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx']
+        ignore line: []
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_edffb/fast]
+        ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_edffb.dir/build.make CMakeFiles/cmTC_edffb.dir/build]
+        ignore line: [Building C object CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0   -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -v -Wl -v -MD -MT CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Apple clang version 17.0.0 (clang-1700.4.4.1)]
+        ignore line: [Target: arm64-apple-ios13.0]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+        ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+        ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-ios13.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.1 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-a7 -target-feature +zcm -target-feature +zcz -target-feature +v8a -target-feature +aes -target-feature +fp-armv8 -target-feature +neon -target-feature +perfmon -target-feature +sha2 -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx -target-linker-version 1230.1 -v -fcoverage-compilation-dir=/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-RUUaAx -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -fvisibility=hidden -fvisibility-inlines-hidden -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 17.0.0 (clang-1700.4.4.1) default target arm64-apple-darwin25.2.0]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/local/include"]
+        ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/Library/Frameworks"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/usr/include]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/Frameworks (framework directory)]
+        ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk/System/Library/SubFrameworks (framework directory)]
+        ignore line: [End of search list.]
+        ignore line: [Linking C static library libcmTC_edffb.a]
+        ignore line: [/opt/homebrew/bin/cmake -P CMakeFiles/cmTC_edffb.dir/cmake_clean_target.cmake]
+        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_edffb.dir/link.txt --verbose=1]
+        ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_edffb.a CMakeFiles/cmTC_edffb.dir/CMakeCCompilerABI.c.o]
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:102 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_W4"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Ttogux"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Ttogux"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_W4"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Ttogux'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_df808/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_df808.dir/build.make CMakeFiles/cmTC_df808.dir/build
+        Building C object CMakeFiles/cmTC_df808.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_W4  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /W4 -MD -MT CMakeFiles/cmTC_df808.dir/src.c.o -MF CMakeFiles/cmTC_df808.dir/src.c.o.d -o CMakeFiles/cmTC_df808.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Ttogux/src.c
+        clang: error: no such file or directory: '/W4'
+        make[1]: *** [CMakeFiles/cmTC_df808.dir/src.c.o] Error 1
+        make: *** [cmTC_df808/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:103 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-MQ7SBT"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-MQ7SBT"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_UNUSED_PARAMETER_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-MQ7SBT'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_5b92c/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_5b92c.dir/build.make CMakeFiles/cmTC_5b92c.dir/build
+        Building C object CMakeFiles/cmTC_5b92c.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_UNUSED_PARAMETER_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4100 -MD -MT CMakeFiles/cmTC_5b92c.dir/src.c.o -MF CMakeFiles/cmTC_5b92c.dir/src.c.o.d -o CMakeFiles/cmTC_5b92c.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-MQ7SBT/src.c
+        clang: error: no such file or directory: '/wd4100'
+        make[1]: *** [CMakeFiles/cmTC_5b92c.dir/src.c.o] Error 1
+        make: *** [cmTC_5b92c/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:104 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-81YKH1"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-81YKH1"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-81YKH1'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_47697/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_47697.dir/build.make CMakeFiles/cmTC_47697.dir/build
+        Building C object CMakeFiles/cmTC_47697.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_CONDITIONAL_CONSTANT_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4127 -MD -MT CMakeFiles/cmTC_47697.dir/src.c.o -MF CMakeFiles/cmTC_47697.dir/src.c.o.d -o CMakeFiles/cmTC_47697.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-81YKH1/src.c
+        clang: error: no such file or directory: '/wd4127'
+        make[1]: *** [CMakeFiles/cmTC_47697.dir/src.c.o] Error 1
+        make: *** [cmTC_47697/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:105 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_NONSTANDARD_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-ETDu3D"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-ETDu3D"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_NONSTANDARD_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-ETDu3D'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_85b36/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_85b36.dir/build.make CMakeFiles/cmTC_85b36.dir/build
+        Building C object CMakeFiles/cmTC_85b36.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_NONSTANDARD_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4201 -MD -MT CMakeFiles/cmTC_85b36.dir/src.c.o -MF CMakeFiles/cmTC_85b36.dir/src.c.o.d -o CMakeFiles/cmTC_85b36.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-ETDu3D/src.c
+        clang: error: no such file or directory: '/wd4201'
+        make[1]: *** [CMakeFiles/cmTC_85b36.dir/src.c.o] Error 1
+        make: *** [cmTC_85b36/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:106 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-fUVxDW"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-fUVxDW"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-fUVxDW'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_fa2eb/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_fa2eb.dir/build.make CMakeFiles/cmTC_fa2eb.dir/build
+        Building C object CMakeFiles/cmTC_fa2eb.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4206 -MD -MT CMakeFiles/cmTC_fa2eb.dir/src.c.o -MF CMakeFiles/cmTC_fa2eb.dir/src.c.o.d -o CMakeFiles/cmTC_fa2eb.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-fUVxDW/src.c
+        clang: error: no such file or directory: '/wd4206'
+        make[1]: *** [CMakeFiles/cmTC_fa2eb.dir/src.c.o] Error 1
+        make: *** [cmTC_fa2eb/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:107 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-6RR8oD"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-6RR8oD"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-6RR8oD'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c6410/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_c6410.dir/build.make CMakeFiles/cmTC_c6410.dir/build
+        Building C object CMakeFiles/cmTC_c6410.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4210 -MD -MT CMakeFiles/cmTC_c6410.dir/src.c.o -MF CMakeFiles/cmTC_c6410.dir/src.c.o.d -o CMakeFiles/cmTC_c6410.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-6RR8oD/src.c
+        clang: error: no such file or directory: '/wd4210'
+        make[1]: *** [CMakeFiles/cmTC_c6410.dir/src.c.o] Error 1
+        make: *** [cmTC_c6410/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:108 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-IdBTnO"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-IdBTnO"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-IdBTnO'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_5ba70/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_5ba70.dir/build.make CMakeFiles/cmTC_5ba70.dir/build
+        Building C object CMakeFiles/cmTC_5ba70.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4232 -MD -MT CMakeFiles/cmTC_5ba70.dir/src.c.o -MF CMakeFiles/cmTC_5ba70.dir/src.c.o.d -o CMakeFiles/cmTC_5ba70.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-IdBTnO/src.c
+        clang: error: no such file or directory: '/wd4232'
+        make[1]: *** [CMakeFiles/cmTC_5ba70.dir/src.c.o] Error 1
+        make: *** [cmTC_5ba70/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:109 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_HIDES_LOCAL"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-jCbfX5"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-jCbfX5"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_HIDES_LOCAL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-jCbfX5'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_85908/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_85908.dir/build.make CMakeFiles/cmTC_85908.dir/build
+        Building C object CMakeFiles/cmTC_85908.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_HIDES_LOCAL  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4456 -MD -MT CMakeFiles/cmTC_85908.dir/src.c.o -MF CMakeFiles/cmTC_85908.dir/src.c.o.d -o CMakeFiles/cmTC_85908.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-jCbfX5/src.c
+        clang: error: no such file or directory: '/wd4456'
+        make[1]: *** [CMakeFiles/cmTC_85908.dir/src.c.o] Error 1
+        make: *** [cmTC_85908/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:110 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_HIDES_PARAM"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-yEKDGW"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-yEKDGW"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_HIDES_PARAM"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-yEKDGW'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_74a72/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_74a72.dir/build.make CMakeFiles/cmTC_74a72.dir/build
+        Building C object CMakeFiles/cmTC_74a72.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_HIDES_PARAM  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4457 -MD -MT CMakeFiles/cmTC_74a72.dir/src.c.o -MF CMakeFiles/cmTC_74a72.dir/src.c.o.d -o CMakeFiles/cmTC_74a72.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-yEKDGW/src.c
+        clang: error: no such file or directory: '/wd4457'
+        make[1]: *** [CMakeFiles/cmTC_74a72.dir/src.c.o] Error 1
+        make: *** [cmTC_74a72/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:111 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_HIDES_GLOBAL"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-xOu64c"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-xOu64c"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_HIDES_GLOBAL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-xOu64c'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a8376/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_a8376.dir/build.make CMakeFiles/cmTC_a8376.dir/build
+        Building C object CMakeFiles/cmTC_a8376.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_HIDES_GLOBAL  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4459 -MD -MT CMakeFiles/cmTC_a8376.dir/src.c.o -MF CMakeFiles/cmTC_a8376.dir/src.c.o.d -o CMakeFiles/cmTC_a8376.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-xOu64c/src.c
+        clang: error: no such file or directory: '/wd4459'
+        make[1]: *** [CMakeFiles/cmTC_a8376.dir/src.c.o] Error 1
+        make: *** [cmTC_a8376/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:112 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-0p6kX9"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-0p6kX9"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-0p6kX9'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_7c266/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_7c266.dir/build.make CMakeFiles/cmTC_7c266.dir/build
+        Building C object CMakeFiles/cmTC_7c266.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4706 -MD -MT CMakeFiles/cmTC_7c266.dir/src.c.o -MF CMakeFiles/cmTC_7c266.dir/src.c.o.d -o CMakeFiles/cmTC_7c266.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-0p6kX9/src.c
+        clang: error: no such file or directory: '/wd4706'
+        make[1]: *** [CMakeFiles/cmTC_7c266.dir/src.c.o] Error 1
+        make: *** [cmTC_7c266/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:113 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_UNSAFE_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-3qJ9Ry"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-3qJ9Ry"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_UNSAFE_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-3qJ9Ry'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_13479/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_13479.dir/build.make CMakeFiles/cmTC_13479.dir/build
+        Building C object CMakeFiles/cmTC_13479.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_UNSAFE_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /wd4996 -MD -MT CMakeFiles/cmTC_13479.dir/src.c.o -MF CMakeFiles/cmTC_13479.dir/src.c.o.d -o CMakeFiles/cmTC_13479.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-3qJ9Ry/src.c
+        clang: error: no such file or directory: '/wd4996'
+        make[1]: *** [CMakeFiles/cmTC_13479.dir/src.c.o] Error 1
+        make: *** [cmTC_13479/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:115 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_WALL"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-LhKVU1"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-LhKVU1"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_WALL"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-LhKVU1'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_76ae1/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_76ae1.dir/build.make CMakeFiles/cmTC_76ae1.dir/build
+        Building C object CMakeFiles/cmTC_76ae1.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_WALL  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -Wall -MD -MT CMakeFiles/cmTC_76ae1.dir/src.c.o -MF CMakeFiles/cmTC_76ae1.dir/src.c.o.d -o CMakeFiles/cmTC_76ae1.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-LhKVU1/src.c
+        Linking C static library libcmTC_76ae1.a
+        /opt/homebrew/bin/cmake -P CMakeFiles/cmTC_76ae1.dir/cmake_clean_target.cmake
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76ae1.dir/link.txt --verbose=1
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_76ae1.a CMakeFiles/cmTC_76ae1.dir/src.c.o
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:118 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_NO_UNUSED_PARAMETER"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-OpoLos"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-OpoLos"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_NO_UNUSED_PARAMETER"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-OpoLos'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_4d80b/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_4d80b.dir/build.make CMakeFiles/cmTC_4d80b.dir/build
+        Building C object CMakeFiles/cmTC_4d80b.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_NO_UNUSED_PARAMETER  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -Wno-unused-parameter -MD -MT CMakeFiles/cmTC_4d80b.dir/src.c.o -MF CMakeFiles/cmTC_4d80b.dir/src.c.o.d -o CMakeFiles/cmTC_4d80b.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-OpoLos/src.c
+        Linking C static library libcmTC_4d80b.a
+        /opt/homebrew/bin/cmake -P CMakeFiles/cmTC_4d80b.dir/cmake_clean_target.cmake
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d80b.dir/link.txt --verbose=1
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_4d80b.a CMakeFiles/cmTC_4d80b.dir/src.c.o
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:119 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_STRICT_PROTOTYPES"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-mfmkTl"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-mfmkTl"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_STRICT_PROTOTYPES"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-mfmkTl'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_a92ca/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_a92ca.dir/build.make CMakeFiles/cmTC_a92ca.dir/build
+        Building C object CMakeFiles/cmTC_a92ca.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_STRICT_PROTOTYPES  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -Wstrict-prototypes -MD -MT CMakeFiles/cmTC_a92ca.dir/src.c.o -MF CMakeFiles/cmTC_a92ca.dir/src.c.o.d -o CMakeFiles/cmTC_a92ca.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-mfmkTl/src.c
+        Linking C static library libcmTC_a92ca.a
+        /opt/homebrew/bin/cmake -P CMakeFiles/cmTC_a92ca.dir/cmake_clean_target.cmake
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a92ca.dir/link.txt --verbose=1
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_a92ca.a CMakeFiles/cmTC_a92ca.dir/src.c.o
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:120 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_EXTRA"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Jeqble"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Jeqble"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_EXTRA"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Jeqble'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_87685/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_87685.dir/build.make CMakeFiles/cmTC_87685.dir/build
+        Building C object CMakeFiles/cmTC_87685.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_EXTRA  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -Wextra -MD -MT CMakeFiles/cmTC_87685.dir/src.c.o -MF CMakeFiles/cmTC_87685.dir/src.c.o.d -o CMakeFiles/cmTC_87685.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-Jeqble/src.c
+        Linking C static library libcmTC_87685.a
+        /opt/homebrew/bin/cmake -P CMakeFiles/cmTC_87685.dir/cmake_clean_target.cmake
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87685.dir/link.txt --verbose=1
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_87685.a CMakeFiles/cmTC_87685.dir/src.c.o
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:122 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_LINT_UTF8_MSVC"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-CvcX0C"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-CvcX0C"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_LINT_UTF8_MSVC"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-CvcX0C'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_3f49a/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_3f49a.dir/build.make CMakeFiles/cmTC_3f49a.dir/build
+        Building C object CMakeFiles/cmTC_3f49a.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_LINT_UTF8_MSVC  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   /utf-8 -MD -MT CMakeFiles/cmTC_3f49a.dir/src.c.o -MF CMakeFiles/cmTC_3f49a.dir/src.c.o.d -o CMakeFiles/cmTC_3f49a.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-CvcX0C/src.c
+        clang: error: no such file or directory: '/utf-8'
+        make[1]: *** [CMakeFiles/cmTC_3f49a.dir/src.c.o] Error 1
+        make: *** [cmTC_3f49a/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:108 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCCompilerFlag.cmake:56 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:161 (check_c_compiler_flag)"
+    checks:
+      - "Performing Test UV_F_STRICT_ALIASING"
+    directories:
+      source: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-R1FWf4"
+      binary: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-R1FWf4"
+    cmakeVariables:
+      BUILD_LIBTOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool"
+      CMAKE_ASM_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_ASM_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -x assembler-with-cpp"
+      CMAKE_CXX_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
+      CMAKE_CXX_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_CXX_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_CXX_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_CXX_FLAGS_MINSIZEREL: "-DNDEBUG -Os -DNDEBUG -Os "
+      CMAKE_CXX_FLAGS_RELEASE: "-DNDEBUG -O3 -DNDEBUG -O3 "
+      CMAKE_CXX_FLAGS_RELWITHDEBINFO: "-DNDEBUG -O2 -g -DNDEBUG -O2 -g "
+      CMAKE_CXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_C_COMPILER: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
+      CMAKE_C_COMPILER_TARGET: "arm64-apple-ios13.0"
+      CMAKE_C_FLAGS: " -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden "
+      CMAKE_C_FLAGS_DEBUG: "-O0 -g -O0 -g "
+      CMAKE_C_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_DEVELOPER_ROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_INSTALL_NAME_TOOL: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/install_name_tool"
+      CMAKE_MODULE_PATH: "/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/cmake"
+      CMAKE_OBJCXX_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJCXX_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OBJC_FLAGS: " -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0  -target arm64-apple-ios13.0   -fvisibility=hidden -fvisibility-inlines-hidden -fobjc-arc -fobjc-abi-version=2 -DOBJC_OLD_DISPATCH_PROTOTYPES=0 "
+      CMAKE_OBJC_LINK_FLAGS: "-Wl,-search_paths_first -Wl,-headerpad_max_install_names"
+      CMAKE_OSX_ARCHITECTURES: "arm64"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "13.0"
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      CMAKE_OSX_SYSROOT_INT: "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk"
+      DEPLOYMENT_TARGET: "13.0"
+      ENABLE_ARC: "ON"
+      ENABLE_BITCODE: "OFF"
+      NAMED_LANGUAGE_SUPPORT: "ON"
+      PLATFORM: "OS64"
+      SDK_VERSION: "26.1"
+      XCODE_VERSION_INT: "26.1.1"
+    buildResult:
+      variable: "UV_F_STRICT_ALIASING"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-R1FWf4'
+        
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_2f1d4/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_2f1d4.dir/build.make CMakeFiles/cmTC_2f1d4.dir/build
+        Building C object CMakeFiles/cmTC_2f1d4.dir/src.c.o
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --target=arm64-apple-ios13.0 -DUV_F_STRICT_ALIASING  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden  -target arm64-apple-ios13.0    -fvisibility=hidden -fvisibility-inlines-hidden   -std=gnu90 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS26.1.sdk -miphoneos-version-min=13.0 -fvisibility=hidden   -fno-strict-aliasing -MD -MT CMakeFiles/cmTC_2f1d4.dir/src.c.o -MF CMakeFiles/cmTC_2f1d4.dir/src.c.o.d -o CMakeFiles/cmTC_2f1d4.dir/src.c.o -c /Users/iml1s/Documents/mine/XMRigMiner-Android/ios/XMRigCore/libs/libuv-1.48.0/build-ios/CMakeFiles/CMakeScratch/TryCompile-R1FWf4/src.c
+        Linking C static library libcmTC_2f1d4.a
+        /opt/homebrew/bin/cmake -P CMakeFiles/cmTC_2f1d4.dir/cmake_clean_target.cmake
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f1d4.dir/link.txt --verbose=1
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -o libcmTC_2f1d4.a CMakeFiles/cmTC_2f1d4.dir/src.c.o
+        
+      exitCode: 0
+...
