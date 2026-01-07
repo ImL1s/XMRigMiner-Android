@@ -172,6 +172,9 @@ ndk.dir=/Users/<username>/Library/Android/sdk/ndk/26.3.11579264
 ./gradlew installDebug
 ```
 
+### iOS Build
+For iOS build instructions (sideloading/signing), please refer to [BUILDING_iOS.md](ios/BUILDING_iOS.md).
+
 ## 📱 Usage Instructions
 
 ### Initial Setup
