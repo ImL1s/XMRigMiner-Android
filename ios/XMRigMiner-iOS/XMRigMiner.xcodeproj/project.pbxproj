@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ConfigViewSwift /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ConfigViewRef /* ConfigView.swift */; };
+		ContentViewSwift /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ContentViewRef /* ContentView.swift */; };
+		LibUV /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = LibUVRef /* libuv.a */; };
+		LibXMRig /* libxmrig-ios-arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = LibXMRigRef /* libxmrig-ios-arm64.a */; };
+		MiningConfigSwift /* MiningConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = MiningConfigRef /* MiningConfig.swift */; };
+		XMRigBridgeMM /* XMRigBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = XMRigBridgeRef /* XMRigBridge.mm */; };
+		XMRigMinerAppSwift /* XMRigMinerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = XMRigMinerAppRef /* XMRigMinerApp.swift */; };
+		XMRigWrapperSwift /* XMRigWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = XMRigWrapperRef /* XMRigWrapper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AppProduct /* XMRigMiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMRigMiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BridgingHeaderRef /* XMRigMiner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XMRigMiner-Bridging-Header.h"; sourceTree = "<group>"; };
+		ConfigViewRef /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		ContentViewRef /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		InfoPlistRef /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		LibUVRef /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = "../../XMRigCore/libs/libuv-1.48.0/build-ios/libuv.a"; sourceTree = "<group>"; };
+		LibXMRigRef /* libxmrig-ios-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libxmrig-ios-arm64.a"; path = "../../XMRigCore/output/libxmrig-ios-arm64.a"; sourceTree = "<group>"; };
+		MiningConfigRef /* MiningConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiningConfig.swift; sourceTree = "<group>"; };
+		XMRigBridgeRef /* XMRigBridge.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = XMRigBridge.mm; sourceTree = "<group>"; };
+		XMRigMinerAppRef /* XMRigMinerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMRigMinerApp.swift; sourceTree = "<group>"; };
+		XMRigWrapperRef /* XMRigWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMRigWrapper.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AppFrameworks /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				LibXMRig /* libxmrig-ios-arm64.a in Frameworks */,
+				LibUV /* libuv.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AppGroup /* App */ = {
+			isa = PBXGroup;
+			children = (
+				XMRigMinerAppRef /* XMRigMinerApp.swift */,
+				ContentViewRef /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BridgeGroup /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				XMRigBridgeRef /* XMRigBridge.mm */,
+				BridgingHeaderRef /* XMRigMiner-Bridging-Header.h */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		LibrariesGroup /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				LibXMRigRef /* libxmrig-ios-arm64.a */,
+				LibUVRef /* libuv.a */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		MainGroup = {
+			isa = PBXGroup;
+			children = (
+				SourcesGroup /* Sources */,
+				LibrariesGroup /* Libraries */,
+				ProductsGroup /* Products */,
+				InfoPlistRef /* Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		ModelsGroup /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				MiningConfigRef /* MiningConfig.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ProductsGroup /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AppProduct /* XMRigMiner.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ServicesGroup /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				XMRigWrapperRef /* XMRigWrapper.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		SourcesGroup /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AppGroup /* App */,
+				ModelsGroup /* Models */,
+				ViewsGroup /* Views */,
+				ServicesGroup /* Services */,
+				BridgeGroup /* Bridge */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		ViewsGroup /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ConfigViewRef /* ConfigView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AppTarget /* XMRigMiner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BuildConfigList /* Build configuration list for PBXNativeTarget "XMRigMiner" */;
+			buildPhases = (
+				SourcesBuild /* Sources */,
+				AppFrameworks /* Frameworks */,
+				ResourcesBuild /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XMRigMiner;
+			productName = XMRigMiner;
+			productReference = AppProduct /* XMRigMiner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ProjectRoot /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AppTarget = {
+						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
+					};
+				};
+			};
+			buildConfigurationList = ProjectBuildConfigList /* Build configuration list for PBXProject "XMRigMiner" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = MainGroup;
+			productRefGroup = ProductsGroup /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AppTarget /* XMRigMiner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ResourcesBuild /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		SourcesBuild /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ContentViewSwift /* ContentView.swift in Sources */,
+				XMRigMinerAppSwift /* XMRigMinerApp.swift in Sources */,
+				XMRigWrapperSwift /* XMRigWrapper.swift in Sources */,
+				MiningConfigSwift /* MiningConfig.swift in Sources */,
+				ConfigViewSwift /* ConfigView.swift in Sources */,
+				XMRigBridgeMM /* XMRigBridge.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DebugConfig /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ReleaseConfig /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		TargetDebugConfig /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZAZT4JZ625;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../XMRigCore/include";
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../XMRigCore/output",
+					"$(SRCROOT)/../XMRigCore/libs/libuv-1.48.0/build-ios",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.iml1s.xmrigminer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/Bridge/XMRigMiner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		TargetReleaseConfig /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZAZT4JZ625;
+				GENERATE_INFOPLIST_FILE = NO;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../XMRigCore/include";
+				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../XMRigCore/output",
+					"$(SRCROOT)/../XMRigCore/libs/libuv-1.48.0/build-ios",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-lz",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.iml1s.xmrigminer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Sources/Bridge/XMRigMiner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BuildConfigList /* Build configuration list for PBXNativeTarget "XMRigMiner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				TargetDebugConfig /* Debug */,
+				TargetReleaseConfig /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ProjectBuildConfigList /* Build configuration list for PBXProject "XMRigMiner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DebugConfig /* Debug */,
+				ReleaseConfig /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ProjectRoot /* Project object */;
+}

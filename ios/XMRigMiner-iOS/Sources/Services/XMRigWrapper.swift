@@ -34,18 +34,15 @@ class XMRigWrapper: ObservableObject {
     // MARK: - Private Properties
     
     private var statsTimer: Timer?
-    private let bridge = XMRigBridge.shared()
+    private let bridge: XMRigBridge
     private let maxLogLines = 100
     
     // MARK: - Initialization
     
     init() {
-        version = bridge?.getVersion() ?? "Unknown"
+        bridge = XMRigBridge.shared()
+        version = bridge.getVersion()
         setupLogCallback()
-    }
-    
-    deinit {
-        cleanup()
     }
     
     // MARK: - Public Methods
@@ -53,32 +50,32 @@ class XMRigWrapper: ObservableObject {
     /// Initialize miner with configuration
     func initialize(config: MiningConfig) -> Bool {
         guard let jsonConfig = config.toJSON() else { return false }
-        return bridge?.initialize(withConfig: jsonConfig) ?? false
+        return bridge.initialize(withConfig: jsonConfig)
     }
     
     /// Start mining
     func start() {
-        guard bridge?.startMining() == true else { return }
+        guard bridge.startMining() else { return }
         isRunning = true
         startStatsTimer()
     }
     
     /// Stop mining
     func stop() {
-        bridge?.stopMining()
+        bridge.stopMining()
         isRunning = false
         stopStatsTimer()
     }
     
     /// Set number of mining threads
     func setThreads(_ count: Int) {
-        bridge?.setThreads(Int32(count))
+        bridge.setThreads(Int32(count))
     }
     
     /// Cleanup resources
     func cleanup() {
         stop()
-        bridge?.cleanup()
+        bridge.cleanup()
         logs.removeAll()
     }
     
@@ -90,7 +87,7 @@ class XMRigWrapper: ObservableObject {
     // MARK: - Private Methods
     
     private func setupLogCallback() {
-        bridge?.logCallback = { [weak self] line in
+        bridge.logCallback = { [weak self] line in
             Task { @MainActor in
                 self?.handleLogLine(line)
             }
@@ -105,7 +102,7 @@ class XMRigWrapper: ObservableObject {
         }
         
         // Parse the line for stats
-        bridge?.updateStats(fromLogLine: line)
+        bridge.updateStats(fromLogLine: line)
     }
     
     private func startStatsTimer() {
@@ -122,7 +119,7 @@ class XMRigWrapper: ObservableObject {
     }
     
     private func updateStats() {
-        guard let statsDict = bridge?.getStats() as? [String: Any] else { return }
+        guard let statsDict = bridge.getStats() as? [String: Any] else { return }
         
         let newStats = MiningStats(
             hashrate10s: statsDict["hashrate_10s"] as? Double ?? 0,
