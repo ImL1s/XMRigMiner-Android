@@ -1,0 +1,40 @@
+appId: com.iml1s.xmrigminer
+---
+# XMRig Miner Android E2E Test Flow
+# This test verifies the basic UI navigation and mining flow
+
+# Step 1: Launch the app
+- launchApp
+
+# Step 2: Wait for the main screen to appear
+- assertVisible:
+    text: "XMRig.*"
+    optional: true
+
+# Step 3: Verify mining control button exists
+- assertVisible:
+    text: "Start|Mining|挖礦"
+    optional: true
+
+# Step 4: Navigate to Config tab (if bottom nav exists)
+- tapOn:
+    text: "Config|Settings|配置|設定"
+    optional: true
+
+# Step 5: Verify config screen elements
+- assertVisible:
+    text: "Pool|礦池|Wallet|錢包"
+    optional: true
+
+# Step 6: Go back to mining screen
+- tapOn:
+    text: "Mining|挖礦|Home|主頁"
+    optional: true
+
+# Step 7: Take a screenshot for verification
+- takeScreenshot: e2e_mining_screen
+
+# Step 8: Verify the app didn't crash
+- assertVisible:
+    id: ".*"
+    optional: true

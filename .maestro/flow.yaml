@@ -1,0 +1,50 @@
+appId: com.iml1s.xmrigminer
+---
+# XMRig Miner Android E2E Test Flow
+# Usage: 
+# 1. Ensure device is unlocked and screen is on
+# 2. Run: maestro test .maestro/flow.yaml
+
+# Step 1: Launch the app
+- launchApp:
+    clearState: true
+
+# Step 2: Handle potential overlays (Optional - specific to some devices)
+- runFlow:
+    when:
+      visible: ".*誤觸防護.*"
+    commands:
+        - swipe:
+            start: "50%, 80%"
+            end: "50%, 20%"
+            duration: 800
+
+# Step 3: Verify Main Screen Elements
+- assertVisible: 
+    text: ".*XMRig.*"
+    optional: true
+- assertVisible: ".*Start Mining.*|.*開始挖礦.*"
+
+# Step 4: Verify Logic Navigation
+- tapOn:
+    id: ".*settings.*|.*config.*"
+    optional: true
+    point: "92%, 7%" # Fallback to top-right corner if ID not found
+
+# Step 5: Verify Config Screen
+- assertVisible: ".*Wallet.*|.*錢包.*"
+
+# Step 6: Return to Home
+- back
+
+# Step 7: Start Mining Test
+- tapOn: ".*Start Mining.*|.*開始挖礦.*"
+
+# Step 8: Verify Mining Started (Stop button appears)
+# Wait up to 5 seconds
+- extendedWaitUntil:
+    visible: ".*Stop Mining.*|.*停止挖礦.*"
+    timeout: 5000
+
+# Step 9: Stop Mining
+- tapOn: ".*Stop Mining.*|.*停止挖礦.*"
