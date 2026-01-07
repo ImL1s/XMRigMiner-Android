@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var miner: XMRigWrapper
     @State private var showConfig = false
+    @State private var showLogs = false
     
     var body: some View {
         NavigationStack {
@@ -19,6 +20,9 @@ struct ContentView: View {
                 
                 // Stats Grid
                 StatsGridView()
+                
+                // Log Preview (collapsible)
+                LogPreviewView(showLogs: $showLogs)
                 
                 Spacer()
                 
@@ -37,6 +41,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showConfig) {
                 ConfigView()
+            }
+            .sheet(isPresented: $showLogs) {
+                LogsView()
             }
         }
     }
@@ -90,19 +97,10 @@ struct StatsGridView: View {
         ], spacing: 12) {
             StatCell(title: "Accepted", value: "\(miner.stats.acceptedShares)", color: .green)
             StatCell(title: "Rejected", value: "\(miner.stats.rejectedShares)", color: .red)
-            StatCell(title: "Total Hashes", value: formatHashes(miner.stats.totalHashes), color: .blue)
+            StatCell(title: "60s Avg", value: String(format: "%.1f H/s", miner.stats.hashrate60s), color: .blue)
             StatCell(title: "Threads", value: "\(miner.stats.threads)", color: .orange)
         }
         .padding(.horizontal)
-    }
-    
-    private func formatHashes(_ count: UInt64) -> String {
-        if count >= 1_000_000 {
-            return String(format: "%.1fM", Double(count) / 1_000_000)
-        } else if count >= 1_000 {
-            return String(format: "%.1fK", Double(count) / 1_000)
-        }
-        return "\(count)"
     }
 }
 
@@ -125,6 +123,86 @@ struct StatCell: View {
         .padding()
         .background(Color(.secondarySystemGroupedBackground))
         .cornerRadius(12)
+    }
+}
+
+// MARK: - Log Preview
+
+struct LogPreviewView: View {
+    @EnvironmentObject var miner: XMRigWrapper
+    @Binding var showLogs: Bool
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("Logs")
+                    .font(.headline)
+                Spacer()
+                Button(action: { showLogs = true }) {
+                    Text("View All")
+                        .font(.caption)
+                }
+            }
+            
+            // Show last 3 log lines
+            ScrollView {
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(miner.logs.suffix(3), id: \.self) { line in
+                        Text(line)
+                            .font(.system(size: 10, design: .monospaced))
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
+                    }
+                }
+            }
+            .frame(height: 50)
+        }
+        .padding()
+        .background(Color(.secondarySystemGroupedBackground))
+        .cornerRadius(12)
+        .padding(.horizontal)
+    }
+}
+
+// MARK: - Full Logs View
+
+struct LogsView: View {
+    @EnvironmentObject var miner: XMRigWrapper
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            ScrollViewReader { proxy in
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 2) {
+                        ForEach(Array(miner.logs.enumerated()), id: \.offset) { index, line in
+                            Text(line)
+                                .font(.system(size: 11, design: .monospaced))
+                                .foregroundColor(.primary)
+                                .id(index)
+                        }
+                    }
+                    .padding()
+                }
+                .onChange(of: miner.logs.count) { _ in
+                    if let lastIndex = miner.logs.indices.last {
+                        withAnimation {
+                            proxy.scrollTo(lastIndex, anchor: .bottom)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("XMRig Logs")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Close") { dismiss() }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Clear") { miner.clearLogs() }
+                }
+            }
+        }
     }
 }
 
