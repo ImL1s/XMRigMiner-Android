@@ -17,6 +17,7 @@
 @property (nonatomic, copy, nullable) void (^logCallback)(NSString * _Nonnull);
 
 + (instancetype _Nonnull)shared;
+- (void)setStoragePath:(NSString * _Nonnull)path;
 - (BOOL)initializeWithConfig:(NSString * _Nonnull)jsonConfig;
 - (BOOL)startMining;
 - (void)stopMining;

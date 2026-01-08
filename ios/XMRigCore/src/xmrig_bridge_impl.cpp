@@ -14,6 +14,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <cinttypes>
+#include <getopt.h>
+#include <sys/stat.h>
 
 #include <os/log.h>
 
@@ -95,30 +97,79 @@ const char* xmrig_version_v8(void) {
 
 int xmrig_init_v8(const char* config_json) {
     std::lock_guard<std::mutex> lock(g_mutex);
-    
+
     if (g_is_running) return -1;
-    
-    // Config file setup
-    if (!g_storage_path.empty()) {
-        setenv("HOME", g_storage_path.c_str(), 1);
-        os_log(g_ios_log, "[XMRIG BRIDGE vFINAL_PROBE] Overriding HOME to: %{public}s", g_storage_path.c_str());
-    }
-    
+
+    // Get the app container root from storage path
     std::string base_path = g_storage_path.empty() ? "/tmp" : g_storage_path;
-    g_config_path = base_path + "/.xmrig.json";
-    
-    os_log(g_ios_log, "[XMRIG BRIDGE vFINAL_PROBE] Writing config to %{public}s", g_config_path.c_str());
-    if (g_saved_stdout != -1) {
-        dprintf(g_saved_stdout, "[XMRIG BRIDGE vFINAL_PROBE] Writing config to %s\n", g_config_path.c_str());
-        fsync(g_saved_stdout);
+
+    fprintf(stderr, "[INIT v14] base_path: %s\n", base_path.c_str());
+    os_log(g_ios_log, "[XMRIG BRIDGE v14] base_path: %{public}s", base_path.c_str());
+
+    // Find the container root (go up from Documents/Library/Caches to the container)
+    std::string container_root = base_path;
+    size_t pos = container_root.rfind("/Library/");
+    if (pos != std::string::npos) {
+        container_root = container_root.substr(0, pos);
+    } else {
+        pos = container_root.rfind("/Documents");
+        if (pos != std::string::npos) {
+            container_root = container_root.substr(0, pos);
+        }
     }
-    
+
+    fprintf(stderr, "[INIT v14] container_root: %s\n", container_root.c_str());
+    os_log(g_ios_log, "[XMRIG BRIDGE v14] Container root: %{public}s", container_root.c_str());
+
+    // Try writing to container root first
+    g_config_path = container_root + "/.xmrig.json";
+    fprintf(stderr, "[INIT v14] Trying path: %s\n", g_config_path.c_str());
+    os_log(g_ios_log, "[XMRIG BRIDGE v14] Trying primary path: %{public}s", g_config_path.c_str());
+
     std::ofstream out(g_config_path);
-    if (!out.is_open()) return -2;
-    
+    if (!out.is_open()) {
+        fprintf(stderr, "[INIT v14] Failed primary, errno=%d\n", errno);
+        os_log_error(g_ios_log, "[XMRIG BRIDGE v14] Failed primary path, errno=%d", errno);
+
+        // Fallback: try writing to base_path directory instead
+        g_config_path = base_path + "/.xmrig.json";
+        fprintf(stderr, "[INIT v14] Fallback path: %s\n", g_config_path.c_str());
+        os_log(g_ios_log, "[XMRIG BRIDGE v14] Trying fallback path: %{public}s", g_config_path.c_str());
+
+        out.open(g_config_path);
+        if (!out.is_open()) {
+            fprintf(stderr, "[INIT v14] Fallback ALSO failed, errno=%d\n", errno);
+            os_log_error(g_ios_log, "[XMRIG BRIDGE v14] Fallback also failed, errno=%d", errno);
+            return -2;
+        }
+    }
+
     out << config_json;
+    out.flush();
     out.close();
-    
+    // Force sync to disk
+    int fd = open(g_config_path.c_str(), O_RDONLY);
+    if (fd >= 0) {
+        fsync(fd);
+        close(fd);
+    }
+    fprintf(stderr, "[INIT v14] SUCCESS written to: %s\n", g_config_path.c_str());
+    fprintf(stderr, "[INIT v14] Config content:\n%s\n", config_json);
+    os_log(g_ios_log, "[XMRIG BRIDGE v14] Written to: %{public}s", g_config_path.c_str());
+
+    // Also create .config directory and write there (in same base as successful write)
+    std::string config_base = g_config_path.substr(0, g_config_path.rfind('/'));
+    std::string config_dir = config_base + "/.config";
+    mkdir(config_dir.c_str(), 0755);
+    std::string alt_path = config_dir + "/xmrig.json";
+    std::ofstream out2(alt_path);
+    if (out2.is_open()) {
+        out2 << config_json;
+        out2.close();
+        fprintf(stderr, "[INIT v14] Also wrote .config: %s\n", alt_path.c_str());
+        os_log(g_ios_log, "[XMRIG BRIDGE v14] Also wrote to %{public}s", alt_path.c_str());
+    }
+
     return 0;
 }
 
@@ -181,25 +232,39 @@ int xmrig_start_v8(void) {
 
     // Start mining thread
     g_mining_thread = std::thread([]() {
-        if (g_log_callback) g_log_callback("[XMRIG BRIDGE] Starting real XMRig core thread...");
-        
-        // Use a local copy of the global config path
-        std::string local_config_path = g_config_path;
-        
-        if (g_log_callback) {
-            std::string msg = "[XMRIG BRIDGE] Config path: " + local_config_path;
-            g_log_callback(msg.c_str());
-        }
-        
-        static std::string arg_prog = "xmrig";
-        static std::string arg_c = "-c";
-        
-        const char* argv[] = { arg_prog.c_str(), arg_c.c_str(), local_config_path.c_str(), nullptr };
-        int argc = 3;
+        if (g_log_callback) g_log_callback("[XMRIG BRIDGE v15] Starting XMRig core...");
 
-        os_log(g_ios_log, "[BRIDGE v8] Executing XMRig with config: %{public}s", local_config_path.c_str());
+        fprintf(stderr, "[START v15] Using config path: %s\n", g_config_path.c_str());
         if (g_saved_stdout != -1) {
-            dprintf(g_saved_stdout, "[BRIDGE v8] REAL_STDOUT: Executing XMRig with argc=%d, config=%s\n", argc, local_config_path.c_str());
+            dprintf(g_saved_stdout, "[START v15] Config path: %s\n", g_config_path.c_str());
+            fsync(g_saved_stdout);
+        }
+
+        // Pass config path explicitly with --config=<path> format
+        static std::string arg_prog = "xmrig";
+        static std::string arg_config_opt = std::string("--config=") + g_config_path;
+        const char* argv[] = { arg_prog.c_str(), arg_config_opt.c_str(), nullptr };
+        int argc = 2;
+
+        fprintf(stderr, "[START v16] XMRig args: %s %s\n", argv[0], argv[1]);
+        if (g_saved_stdout != -1) {
+            dprintf(g_saved_stdout, "[START v16] XMRig args: %s %s\n", argv[0], argv[1]);
+            fsync(g_saved_stdout);
+        }
+
+        // Reset ALL getopt state for re-entry (critical for library usage)
+        optind = 1;
+        opterr = 1;
+        optopt = 0;
+#ifdef __APPLE__
+        optreset = 1;
+#endif
+
+        // Set XMRIG_CONFIG_PATH environment variable for our patched Base.cpp
+        setenv("XMRIG_CONFIG_PATH", g_config_path.c_str(), 1);
+        fprintf(stderr, "[START v17] Set XMRIG_CONFIG_PATH=%s\n", g_config_path.c_str());
+        if (g_saved_stdout != -1) {
+            dprintf(g_saved_stdout, "[START v17] Set XMRIG_CONFIG_PATH=%s\n", g_config_path.c_str());
             fsync(g_saved_stdout);
         }
 
@@ -208,18 +273,19 @@ int xmrig_start_v8(void) {
             g_app = new App(g_process);
             g_app->exec();
         } catch (const std::exception& e) {
-            os_log_error(g_ios_log, "[BRIDGE v8] XMRig exception: %{public}s", e.what());
+            os_log_error(g_ios_log, "[BRIDGE v10] XMRig exception: %{public}s", e.what());
+            if (g_saved_stdout != -1) {
+                dprintf(g_saved_stdout, "[BRIDGE v10] Exception: %s\n", e.what());
+            }
         }
-        
+
         delete g_app;
         delete g_process;
         g_app = nullptr;
         g_process = nullptr;
-        
-        if (g_log_callback) g_log_callback("[XMRIG BRIDGE] XMRig core stopped.");
+
+        if (g_log_callback) g_log_callback("[XMRIG BRIDGE v10] XMRig core stopped.");
         g_is_running = false;
-        
-        // Don't restore stdout here, let cleanup do it or just exit
     });
     g_mining_thread.detach();
 

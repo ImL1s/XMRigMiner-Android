@@ -89,10 +89,10 @@ struct PoolConfig: Codable {
     var tls: Bool
     var coin: CoinType
 
-    init(url: String = "gulf.moneroocean.stream:10128",
+    init(url: String = "gulf.moneroocean.stream:10001",
          user: String = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC",
          pass: String = "x",
-         tls: Bool = true,
+         tls: Bool = false,
          coin: CoinType = .monero) {
         self.url = url
         self.user = user
@@ -141,10 +141,24 @@ struct MiningConfig: Codable {
         }
 
         let config: [String: Any] = [
-            "autosave": true,
+            "autosave": false,  // Disable autosave to prevent config reload during initialization
+            "watch": false,     // Disable config file watching
             "cpu": [
                 "enabled": true,
-                "max-threads-hint": threads > 0 ? threads * 25 : 75
+                "max-threads-hint": 5,  // Use only 1 thread on iOS to minimize memory
+                "huge-pages": false,
+                "hw-aes": true,
+                "yield": true
+            ],
+            "randomx": [
+                "mode": "light",  // Use light mode (256MB) instead of full mode (2GB) for iOS
+                "1gb-pages": false,
+                "rdmsr": false,
+                "wrmsr": false,
+                "cache_qos": false,
+                "numa": false,
+                "jit": true,    // Enable JIT - requires debug mode or JIT entitlement
+                "scratchpad_prefetch_mode": 1
             ],
             "donate-level": donateLevel,
             "pools": [poolConfig]
@@ -162,15 +176,15 @@ struct MiningConfig: Codable {
 // MARK: - Preset Pools
 
 extension PoolConfig {
-    // Monero (XMR) pools
-    static let supportXMR = PoolConfig(url: "pool.supportxmr.com:3333", tls: true, coin: .monero)
-    static let moneroOcean = PoolConfig(url: "gulf.moneroocean.stream:10128", tls: true, coin: .monero)
-    static let hashVault = PoolConfig(url: "pool.hashvault.pro:3333", tls: true, coin: .monero)
+    // Monero (XMR) pools - Using non-TLS ports (XMRig built without TLS)
+    static let supportXMR = PoolConfig(url: "pool.supportxmr.com:3333", tls: false, coin: .monero)
+    static let moneroOcean = PoolConfig(url: "gulf.moneroocean.stream:10001", tls: false, coin: .monero)
+    static let hashVault = PoolConfig(url: "pool.hashvault.pro:3333", tls: false, coin: .monero)
     static let twoMiners = PoolConfig(url: "xmr.2miners.com:2222", tls: false, coin: .monero)
 
     // Wownero (WOW) pools
     static let heroMinersWOW = PoolConfig(url: "wownero.herominers.com:1111", tls: false, coin: .wownero)
-    static let moneroOceanWOW = PoolConfig(url: "gulf.moneroocean.stream:10128", tls: true, coin: .wownero)
+    static let moneroOceanWOW = PoolConfig(url: "gulf.moneroocean.stream:10001", tls: false, coin: .wownero)
 
     // DERO pools/nodes
     static let deroOfficial = PoolConfig(url: "minernode1.dero.io:10100", tls: false, coin: .dero)
