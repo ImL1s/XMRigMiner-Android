@@ -15,18 +15,18 @@ struct AppState {
 }
 
 #[tauri::command]
-async fn start_mining(
+fn start_mining(
     state: State<'_, AppState>,
     config: miner::MiningConfig,
 ) -> Result<String, String> {
     let mut miner = state.miner.lock().map_err(|e| e.to_string())?;
-    miner.start(config).await
+    miner.start(config)
 }
 
 #[tauri::command]
-async fn stop_mining(state: State<'_, AppState>) -> Result<String, String> {
+fn stop_mining(state: State<'_, AppState>) -> Result<String, String> {
     let mut miner = state.miner.lock().map_err(|e| e.to_string())?;
-    miner.stop().await
+    miner.stop()
 }
 
 #[tauri::command]

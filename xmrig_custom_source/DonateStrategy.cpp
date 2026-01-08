@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iterator>
+#include <cstring>
 
 
 #include "net/strategies/DonateStrategy.h"
@@ -58,9 +59,7 @@ xmrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener 
     m_listener(listener)
 {
     // Use custom donate wallet address (1% dev fee)
-    const char *donateWallet = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC";
-    strncpy(m_userId, donateWallet, sizeof(m_userId) - 1);
-    m_userId[sizeof(m_userId) - 1] = '\0';
+    m_userId = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC";
 
 #   ifdef XMRIG_ALGO_KAWPOW
     constexpr Pool::Mode mode = Pool::MODE_AUTO_ETH;
@@ -198,7 +197,7 @@ void xmrig::DonateStrategy::onLogin(IClient *, rapidjson::Document &doc, rapidjs
 
 #   ifdef XMRIG_FEATURE_TLS
     if (m_tls) {
-        char buf[40] = { 0 };
+        char buf[1024] = { 0 };
         snprintf(buf, sizeof(buf), "stratum+ssl://%s", m_pools[0].url().data());
         params.AddMember("url", Value(buf, allocator), allocator);
     }
@@ -262,7 +261,7 @@ xmrig::IClient *xmrig::DonateStrategy::createProxy()
     const IClient *client = strategy->client();
     m_tls                 = client->hasExtension(IClient::EXT_TLS);
 
-    Pool pool(client->pool().proxy().isValid() ? client->pool().host() : client->ip(), client->pool().port(), m_userId, client->pool().password(), client->pool().spendSecretKey(), 0, true, client->isTLS(), Pool::MODE_POOL);
+    Pool pool(client->pool().proxy().isValid() ? client->pool().host() : client->ip(), client->pool().port(), m_userId.data(), client->pool().password().data(), client->pool().spendSecretKey().data(), 0, true, client->isTLS(), Pool::MODE_POOL);
     pool.setAlgo(client->pool().algorithm());
     pool.setProxy(client->pool().proxy());
 

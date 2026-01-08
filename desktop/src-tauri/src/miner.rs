@@ -54,7 +54,7 @@ impl MinerState {
         }
     }
 
-    pub async fn start(&mut self, config: MiningConfig) -> Result<String, String> {
+    pub fn start(&mut self, config: MiningConfig) -> Result<String, String> {
         if self.running.load(Ordering::SeqCst) {
             return Err("Miner is already running".to_string());
         }
@@ -85,7 +85,7 @@ impl MinerState {
         }
     }
 
-    pub async fn stop(&mut self) -> Result<String, String> {
+    pub fn stop(&mut self) -> Result<String, String> {
         if !self.running.load(Ordering::SeqCst) {
             return Err("Miner is not running".to_string());
         }

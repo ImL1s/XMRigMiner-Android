@@ -37,8 +37,12 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "resources": ["binaries/*"],
-    "externalBin": ["binaries/xmrig"],
+    "resources": [
+      "binaries/*"
+    ],
+    "externalBin": [
+      "binaries/xmrig"
+    ],
     "macOS": {
       "entitlements": null,
       "exceptionDomain": "",
@@ -68,14 +72,7 @@
   },
   "plugins": {
     "shell": {
-      "open": true,
-      "scope": [
-        {
-          "name": "xmrig",
-          "cmd": "binaries/xmrig",
-          "args": true
-        }
-      ]
+      "open": true
     }
   }
 }
