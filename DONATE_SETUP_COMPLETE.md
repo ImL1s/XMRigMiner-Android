@@ -30,7 +30,7 @@
   static const char *kDonateHostTls = "pool.supportxmr.com";
   
   // 捐贈錢包地址
-  const char *donateWallet = "85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu";
+  const char *donateWallet = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC";
   
   // 端口配置
   TLS: port 5555
@@ -42,7 +42,7 @@
 #### README.md
 - ✅ 添加「開發者捐贈」章節
 - ✅ 說明捐贈比例：1%
-- ✅ 列明捐贈地址：`85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu`
+- ✅ 列明捐贈地址：`8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC`
 - ✅ 解釋工作原理
 - ✅ 添加重要提示說明
 
@@ -63,7 +63,7 @@ XMRig 會在挖礦時間的 1% 切換到開發者的錢包地址進行挖礦：
 - **捐贈比例**: 1%
 - **捐贈池**: pool.supportxmr.com
 - **端口**: 3333 (non-TLS) / 5555 (TLS)
-- **捐贈地址**: `85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu`
+- **捐贈地址**: `8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC`
 
 ## ⚠️ 重要說明
 
@@ -196,7 +196,7 @@ grep -n "donateWallet\|kDonateHost" xmrig_custom_source/DonateStrategy.cpp
 **驗證捐贈配置**：
 ```bash
 $ strings libxmrig.so | grep -E "pool.supportxmr|85E5c5"
-85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC
 pool.supportxmr.com
 ```
 

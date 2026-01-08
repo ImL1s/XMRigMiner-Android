@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XMRig Web Miner - 網頁版 Monero 礦工</title>
-  <meta name="description" content="Browser-based Monero (XMR) miner using RandomX algorithm">
+  <title>XMRig Web Miner - 網頁版加密貨幣礦工</title>
+  <meta name="description" content="Browser-based cryptocurrency miner supporting Monero, Wownero, and DERO">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -17,7 +17,7 @@
         <span class="logo-icon">⛏️</span>
         <h1>XMRig Web Miner</h1>
       </div>
-      <div class="badge">RandomX</div>
+      <div class="badge" id="algo-badge">RandomX</div>
     </header>
 
     <!-- Status Card -->
@@ -49,19 +49,44 @@
     <!-- Configuration Card -->
     <div class="card config-card">
       <h2>⚙️ 設定</h2>
+
+      <!-- Coin Selection (新增) -->
       <div class="control-group">
-        <label for="wallet-address">Monero 錢包地址</label>
+        <label for="coin-select">選擇幣種</label>
+        <select id="coin-select">
+          <option value="monero">⛏️ Monero (XMR) - RandomX</option>
+          <option value="wownero">🎉 Wownero (WOW) - RandomWOW</option>
+          <option value="dero">🔷 DERO - AstroBWT/v3</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="wallet-address" id="wallet-label">Monero 錢包地址</label>
         <input type="text" id="wallet-address" placeholder="4..." spellcheck="false">
+        <small class="hint" id="wallet-hint">Monero 地址以 4 或 8 開頭</small>
       </div>
 
       <div class="control-row">
         <div class="control-group">
           <label for="pool-select">礦池選擇</label>
           <select id="pool-select">
-            <option value="moneroocean">🌊 MoneroOcean (自動選幣，推薦)</option>
-            <option value="supportxmr">💪 SupportXMR</option>
-            <option value="hashvault">🔒 HashVault</option>
-            <option value="2miners">⛏️ 2Miners</option>
+            <!-- Monero pools -->
+            <optgroup label="Monero (XMR)" id="xmr-pools">
+              <option value="moneroocean" data-coin="monero">🌊 MoneroOcean (推薦)</option>
+              <option value="supportxmr" data-coin="monero">💪 SupportXMR</option>
+              <option value="hashvault" data-coin="monero">🔒 HashVault</option>
+              <option value="2miners" data-coin="monero">⛏️ 2Miners</option>
+            </optgroup>
+            <!-- Wownero pools -->
+            <optgroup label="Wownero (WOW)" id="wow-pools">
+              <option value="herominers-wow" data-coin="wownero">🦸 HeroMiners WOW</option>
+              <option value="moneroocean-wow" data-coin="wownero">🌊 MoneroOcean WOW</option>
+            </optgroup>
+            <!-- DERO nodes -->
+            <optgroup label="DERO" id="dero-pools">
+              <option value="dero-official" data-coin="dero">🔷 DERO Official Node</option>
+              <option value="dero-community" data-coin="dero">🌐 DERO Community Node</option>
+            </optgroup>
             <option value="custom">🔧 自訂代理...</option>
           </select>
         </div>

@@ -76,7 +76,7 @@ cd web && npm run dev
 ### 開發者捐贈
 本應用設置了 1% 的捐贈級別，用於支持開發者持續維護和改進此項目。
 - **捐贈比例**: 1%
-- **捐贈地址**: 85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+- **捐贈地址**: 8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC
 - **透明度**: 所有捐贈設置均在源代碼中公開可見
 - **工作原理**: XMRig 會在挖礦時間的 1% 切換到開發者的錢包地址進行挖礦
 

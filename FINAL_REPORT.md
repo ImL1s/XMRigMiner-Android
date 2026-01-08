@@ -29,7 +29,7 @@ static const char *kDonateHost = "pool.supportxmr.com";
 static const char *kDonateHostTls = "pool.supportxmr.com";
 
 // 您的捐贈錢包地址
-const char *donateWallet = "85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu";
+const char *donateWallet = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC";
 strncpy(m_userId, donateWallet, sizeof(m_userId) - 1);
 m_userId[sizeof(m_userId) - 1] = '\0';
 
@@ -85,7 +85,7 @@ val donateLevel: Int = 1  // 從 0 改為 1
 **驗證捐贈配置**：
 ```bash
 $ strings libxmrig.so | grep "85E5c5"
-85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC
 
 $ strings libxmrig.so | grep "pool.supportxmr"
 pool.supportxmr.com
@@ -112,7 +112,7 @@ $ unzip -l app-debug.apk | grep libxmrig
 1691480  lib/arm64-v8a/libxmrig.so  ✅
 
 $ strings app-debug.apk | grep "85E5c5"
-85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu  ✅
+8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC  ✅
 ```
 
 ### ✅ 6. 文檔更新
@@ -139,7 +139,7 @@ XMRig 會在挖礦過程中按時間比例切換錢包：
 
 ### 捐贈配置
 - **捐贈比例**: 1%
-- **捐贈錢包**: `85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu`
+- **捐贈錢包**: `8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC`
 - **捐贈礦池**: `pool.supportxmr.com`
 - **端口**: 3333 (non-TLS) / 5555 (TLS)
 
@@ -251,7 +251,7 @@ BuildID: db30f53660ad8f7f462caa7d4eb030b49fc396c5
 **恭喜！** 您的 XMRig Android 挖礦應用已經完全配置好捐贈機制：
 
 ✅ **捐贈級別**: 1%  
-✅ **捐贈地址**: `85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu`  
+✅ **捐贈地址**: `8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC`  
 ✅ **捐贈礦池**: `pool.supportxmr.com:3333`  
 ✅ **APK 就緒**: `app/build/outputs/apk/debug/app-debug.apk`  
 
@@ -314,7 +314,7 @@ cp $NDK/toolchains/llvm/prebuilt/darwin-x86_64/sysroot/usr/lib/aarch64-linux-and
 /data/app/com.iml1s.xmrigminer.debug-VMeAQXyAbneMXClKd8UgSA==/lib/arm64/libxmrig.so
 
 # 驗證捐贈地址
-✅ 確認包含: 85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+✅ 確認包含: 8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC
 ✅ 確認包含: pool.supportxmr.com
 ```
 

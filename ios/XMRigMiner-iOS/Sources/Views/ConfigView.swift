@@ -9,18 +9,17 @@ import SwiftUI
 
 struct ConfigView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var selectedCoin: CoinType = .monero
     @State private var walletAddress = ""
     @State private var selectedPool = 0
     @State private var threads = 4
     @State private var workerName = ""
-    
-    private let pools = [
-        ("SupportXMR", PoolConfig.supportXMR),
-        ("MoneroOcean", PoolConfig.moneroOcean),
-        ("HashVault", PoolConfig.hashVault),
-        ("2Miners", PoolConfig.twoMiners)
-    ]
-    
+    @State private var validationError: String?
+
+    private var pools: [(String, PoolConfig)] {
+        PoolConfig.pools(for: selectedCoin)
+    }
+
     private var maxThreads: Int {
         ProcessInfo.processInfo.processorCount
     }
@@ -28,17 +27,54 @@ struct ConfigView: View {
     var body: some View {
         NavigationStack {
             Form {
+                // Coin Selection Section
+                Section("Cryptocurrency") {
+                    Picker("Select Coin", selection: $selectedCoin) {
+                        ForEach(CoinType.allCases, id: \.self) { coin in
+                            Text(coin.displayName).tag(coin)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .onChange(of: selectedCoin) { _ in
+                        // Reset pool selection and clear wallet when coin changes
+                        selectedPool = 0
+                        walletAddress = ""
+                        validationError = nil
+                    }
+
+                    HStack {
+                        Text("Algorithm")
+                        Spacer()
+                        Text(selectedCoin.algorithmDisplay)
+                            .foregroundColor(.secondary)
+                    }
+                }
+
                 // Wallet Section
-                Section("Wallet") {
-                    TextField("Monero Address", text: $walletAddress)
+                Section {
+                    TextField(selectedCoin.walletPlaceholder, text: $walletAddress)
                         .font(.system(.body, design: .monospaced))
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
-                    
+                        .onChange(of: walletAddress) { newValue in
+                            validateWallet(newValue)
+                        }
+
+                    if let error = validationError {
+                        Text(error)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                    }
+
                     TextField("Worker Name (Optional)", text: $workerName)
                         .autocapitalization(.none)
+                } header: {
+                    Text("Wallet")
+                } footer: {
+                    Text(selectedCoin.walletHint)
+                        .font(.caption)
                 }
-                
+
                 // Pool Section
                 Section("Pool") {
                     Picker("Select Pool", selection: $selectedPool) {
@@ -47,20 +83,22 @@ struct ConfigView: View {
                         }
                     }
                     .pickerStyle(.menu)
-                    
-                    HStack {
-                        Text("URL")
-                        Spacer()
-                        Text(pools[selectedPool].1.url)
-                            .foregroundColor(.secondary)
-                            .font(.caption)
+
+                    if selectedPool < pools.count {
+                        HStack {
+                            Text("URL")
+                            Spacer()
+                            Text(pools[selectedPool].1.url)
+                                .foregroundColor(.secondary)
+                                .font(.caption)
+                        }
                     }
                 }
-                
+
                 // Performance Section
                 Section("Performance") {
                     Stepper("Threads: \(threads)", value: $threads, in: 1...maxThreads)
-                    
+
                     HStack {
                         Text("CPU Cores")
                         Spacer()
@@ -68,7 +106,7 @@ struct ConfigView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                
+
                 // Info Section
                 Section {
                     HStack {
@@ -77,11 +115,11 @@ struct ConfigView: View {
                         Text("6.25.0")
                             .foregroundColor(.secondary)
                     }
-                    
+
                     HStack {
-                        Text("Algorithm")
+                        Text("Mining")
                         Spacer()
-                        Text("RandomX")
+                        Text("\(selectedCoin.displayName)")
                             .foregroundColor(.secondary)
                     }
                 } header: {
@@ -104,26 +142,49 @@ struct ConfigView: View {
                         saveConfig()
                         dismiss()
                     }
-                    .disabled(walletAddress.isEmpty)
+                    .disabled(walletAddress.isEmpty || validationError != nil)
                 }
             }
         }
     }
+
+    private func validateWallet(_ address: String) {
+        if address.isEmpty {
+            validationError = nil
+            return
+        }
+
+        if !selectedCoin.validateAddress(address) {
+            validationError = "Invalid \(selectedCoin.displayName) address"
+        } else {
+            validationError = nil
+        }
+    }
     
     private func saveConfig() {
+        guard selectedPool < pools.count else { return }
+
         var pool = pools[selectedPool].1
         pool.user = walletAddress
+        pool.coin = selectedCoin
         if !workerName.isEmpty {
             pool.pass = workerName
         }
-        
+
         let config = MiningConfig(
             pool: pool,
             threads: threads
         )
-        
-        // TODO: Save to UserDefaults or file
-        print("Saving config: \(config)")
+
+        // Save to UserDefaults
+        if let encoded = try? JSONEncoder().encode(config) {
+            UserDefaults.standard.set(encoded, forKey: "miningConfig")
+        }
+
+        print("Saving config for \(selectedCoin.displayName): \(config)")
+        if let json = config.toJSON() {
+            print("XMRig JSON:\n\(json)")
+        }
     }
 }
 

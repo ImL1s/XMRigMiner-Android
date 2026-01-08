@@ -2,6 +2,7 @@ package com.iml1s.xmrigminer.presentation.config
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iml1s.xmrigminer.data.model.CoinType
 import com.iml1s.xmrigminer.data.model.MiningConfig
 import com.iml1s.xmrigminer.data.model.Pool
 import com.iml1s.xmrigminer.data.repository.ConfigRepository
@@ -35,17 +36,21 @@ class ConfigViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 availablePools = poolRepository.getPools()
-                
+
                 configRepository.getConfig().collect { config ->
                     currentConfig = config
-                    val selectedPool = availablePools.find { pool ->
+                    val coinType = config.getCoin()
+                    val filteredPools = availablePools.filter { it.getCoinType() == coinType }
+                    val selectedPool = filteredPools.find { pool ->
                         pool.url == config.poolUrl || pool.sslUrl == config.poolUrl
                     }
-                    
+
                     _uiState.value = ConfigUiState.Success(
                         config = config,
                         pools = availablePools,
-                        selectedPool = selectedPool
+                        selectedPool = selectedPool,
+                        selectedCoinType = coinType,
+                        filteredPools = filteredPools
                     )
                 }
             } catch (e: Exception) {
@@ -56,6 +61,7 @@ class ConfigViewModel @Inject constructor(
 
     fun onEvent(event: ConfigUiEvent) {
         when (event) {
+            is ConfigUiEvent.CoinTypeChanged -> handleCoinTypeChanged(event.coinType)
             is ConfigUiEvent.PoolSelected -> handlePoolSelected(event.pool)
             is ConfigUiEvent.WalletAddressChanged -> handleWalletAddressChanged(event.address)
             is ConfigUiEvent.WorkerNameChanged -> handleWorkerNameChanged(event.name)
@@ -68,10 +74,32 @@ class ConfigViewModel @Inject constructor(
         }
     }
 
+    private fun handleCoinTypeChanged(coinType: CoinType) {
+        val state = _uiState.value as? ConfigUiState.Success ?: return
+        val filteredPools = availablePools.filter { it.getCoinType() == coinType }
+        val defaultPool = filteredPools.firstOrNull()
+        val defaultPoolUrl = defaultPool?.getUrl(currentConfig.useTls)
+            ?: MiningConfig.getDefaultPoolUrl(coinType)
+
+        val newConfig = currentConfig.copy(
+            coinType = coinType.name,
+            poolUrl = defaultPoolUrl,
+            walletAddress = ""  // 清空錢包地址，因為不同幣種格式不同
+        )
+
+        updateConfig(newConfig, state.copy(
+            selectedCoinType = coinType,
+            filteredPools = filteredPools,
+            selectedPool = defaultPool,
+            validationError = null
+        ))
+    }
+
     private fun handlePoolSelected(pool: Pool) {
         val state = _uiState.value as? ConfigUiState.Success ?: return
         val newConfig = currentConfig.copy(
-            poolUrl = pool.getUrl(currentConfig.useTls)
+            poolUrl = pool.getUrl(currentConfig.useTls),
+            coinType = pool.coin
         )
         updateConfig(newConfig, state.copy(selectedPool = pool))
     }
@@ -79,7 +107,7 @@ class ConfigViewModel @Inject constructor(
     private fun handleWalletAddressChanged(address: String) {
         val state = _uiState.value as? ConfigUiState.Success ?: return
         val newConfig = currentConfig.copy(walletAddress = address.trim())
-        val error = validateWalletAddress(address.trim())
+        val error = validateWalletAddress(address.trim(), state.selectedCoinType)
         updateConfig(newConfig, state.copy(validationError = error))
     }
 
@@ -104,7 +132,7 @@ class ConfigViewModel @Inject constructor(
     private fun handleTlsToggled(enabled: Boolean) {
         val state = _uiState.value as? ConfigUiState.Success ?: return
         val newConfig = currentConfig.copy(useTls = enabled)
-        
+
         // Update pool URL if a pool is selected
         state.selectedPool?.let { pool ->
             val updatedConfig = newConfig.copy(poolUrl = pool.getUrl(enabled))
@@ -120,7 +148,7 @@ class ConfigViewModel @Inject constructor(
 
     private fun handleSaveConfig() {
         val state = _uiState.value as? ConfigUiState.Success ?: return
-        
+
         if (!currentConfig.isValid()) {
             viewModelScope.launch {
                 _uiEffect.send(ConfigUiEffect.ShowError("Please fill in all required fields"))
@@ -164,24 +192,45 @@ class ConfigViewModel @Inject constructor(
         _uiState.value = newState.copy(config = newConfig)
     }
 
-    private fun validateWalletAddress(address: String): String? {
+    private fun validateWalletAddress(address: String, coinType: CoinType): String? {
         if (address.isBlank()) return "Wallet address is required"
-        
+
+        return when (coinType) {
+            CoinType.MONERO -> validateMoneroAddress(address)
+            CoinType.WOWNERO -> validateWowneroAddress(address)
+            CoinType.DERO -> validateDeroAddress(address)
+        }
+    }
+
+    private fun validateMoneroAddress(address: String): String? {
         // Monero primary address validation (starts with 4, length 95)
         if (address.startsWith("4") && address.length == 95) {
             return null
         }
-        
         // Monero integrated address (starts with 8, length 106)
         if (address.startsWith("8") && address.length == 106) {
             return null
         }
-        
         // Monero subaddress (starts with 8, length 95)
         if (address.startsWith("8") && address.length == 95) {
             return null
         }
-        
-        return "Invalid Monero wallet address format"
+        return "Invalid Monero wallet address (should start with 4 or 8)"
+    }
+
+    private fun validateWowneroAddress(address: String): String? {
+        // Wownero addresses start with "Wo" and are ~95-97 characters
+        if (address.startsWith("Wo") && address.length in 95..106) {
+            return null
+        }
+        return "Invalid Wownero wallet address (should start with 'Wo')"
+    }
+
+    private fun validateDeroAddress(address: String): String? {
+        // DERO addresses start with "dero" and are 66 characters
+        if (address.startsWith("dero") && address.length >= 60) {
+            return null
+        }
+        return "Invalid DERO wallet address (should start with 'dero')"
     }
 }

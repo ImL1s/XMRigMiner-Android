@@ -43,7 +43,7 @@ sed -i 's/kDefaultDonateLevel = 1/kDefaultDonateLevel = 1/' src/donate.h
 sed -i 's/kMinimumDonateLevel = 1/kMinimumDonateLevel = 0/' src/donate.h
 
 # 2. 手動編輯 src/donate.h，將捐贈地址改為：
-# 85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+# 8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC
 ```
 
 ## 第 3 步：建立建置腳本... (略，參考 BUILDING.md)

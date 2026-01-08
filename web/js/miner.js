@@ -76,6 +76,7 @@ class Miner {
         this.lastStatsTime = Date.now();
 
         this.log(`Starting mining for wallet: ${config.walletAddress.substring(0, 8)}...`);
+        this.log(`Coin: ${config.coin || 'monero'}`);
         this.log(`Pool: ${config.pool}`);
         this.log(`Threads: ${config.threads}`);
 

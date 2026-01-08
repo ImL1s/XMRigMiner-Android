@@ -83,13 +83,25 @@ class PoolProxy {
 
     /**
      * 登入礦池 (Stratum Login)
+     * 支援 Monero (rx/0), Wownero (rx/wow), DERO (astrobwt/v3)
      */
     login(config) {
+        // 根據幣種選擇演算法
+        const algoMap = {
+            'monero': 'rx/0',
+            'wownero': 'rx/wow',
+            'dero': 'astrobwt/v3'
+        };
+
+        const coin = config.coin || 'monero';
+        const algo = algoMap[coin] || 'rx/0';
+
         this.send("login", {
             login: config.walletAddress,
             pass: config.password || "x",
             agent: "xmrig-web-miner/1.0",
-            algo: "rx/0", // RandomX
+            algo: algo,
+            coin: coin,
             pool: config.pool || "supportxmr" // Pool selection for proxy
         });
     }

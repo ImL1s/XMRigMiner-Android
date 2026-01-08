@@ -11,25 +11,28 @@ struct ContentView: View {
     @EnvironmentObject var miner: XMRigWrapper
     @State private var showConfig = false
     @State private var showLogs = false
-    
+    @State private var hasAutoStarted = false
+
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                // Status Card
-                StatusCardView()
-                
-                // Stats Grid
-                StatsGridView()
-                
-                // Log Preview (collapsible)
-                LogPreviewView(showLogs: $showLogs)
-                
-                Spacer()
-                
-                // Control Buttons
-                ControlButtonsView(showConfig: $showConfig)
+            ScrollView {
+                VStack(spacing: 0) {
+                    // Status Card
+                    StatusCardView()
+
+                    // Stats Grid
+                    StatsGridView()
+
+                    // Log Preview (collapsible)
+                    LogPreviewView(showLogs: $showLogs)
+                }
             }
             .background(Color(.systemGroupedBackground))
+            .safeAreaInset(edge: .bottom) {
+                // Control Buttons pinned to bottom
+                ControlButtonsView(showConfig: $showConfig)
+                    .background(Color(.systemGroupedBackground))
+            }
             .navigationTitle("XMRig Miner")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -46,11 +49,26 @@ struct ContentView: View {
                 LogsView()
             }
             .onChange(of: miner.isRunning) { isRunning in
-                // [E2E] Auto-Pilot: Switch to Logs view to verify output visually
+                // Auto-Pilot: Switch to Logs view to verify output visually
                 if isRunning {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
                         showLogs = true
                         print("[ContentView] Auto-Pilot: Opening Logs view...")
+                    }
+                }
+            }
+            .onAppear {
+                // Auto-start mining for testing
+                if !hasAutoStarted && !miner.isRunning {
+                    hasAutoStarted = true
+                    var poolConfig = PoolConfig.moneroOcean
+                    poolConfig.user = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC"
+                    let config = MiningConfig(
+                        pool: poolConfig,
+                        threads: 4
+                    )
+                    if miner.initialize(config: config) {
+                        miner.start()
                     }
                 }
             }
@@ -227,9 +245,11 @@ struct ControlButtonsView: View {
                 if miner.isRunning {
                     miner.stop()
                 } else {
-                    // TODO: Load config from storage
+                    // Test wallet for MoneroOcean
+                    var poolConfig = PoolConfig.moneroOcean
+                    poolConfig.user = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC"
                     let config = MiningConfig(
-                        pool: .supportXMR,
+                        pool: poolConfig,
                         threads: 4
                     )
                     if miner.initialize(config: config) {

@@ -4,27 +4,71 @@
     "url": "pool.supportxmr.com:3333",
     "ssl_url": "pool.supportxmr.com:443",
     "description": "Popular Monero pool with low fees",
-    "fee": "0.6%"
+    "fee": "0.6%",
+    "coin": "MONERO"
   },
   {
     "name": "HashVault",
     "url": "pool.hashvault.pro:3333",
     "ssl_url": "pool.hashvault.pro:443",
     "description": "Reliable pool with good uptime",
-    "fee": "0.9%"
+    "fee": "0.9%",
+    "coin": "MONERO"
   },
   {
     "name": "MoneroOcean",
     "url": "gulf.moneroocean.stream:10128",
     "ssl_url": "gulf.moneroocean.stream:20128",
     "description": "Auto-switching profit pool",
-    "fee": "0%"
+    "fee": "0%",
+    "coin": "MONERO"
   },
   {
     "name": "C3Pool",
     "url": "xmr.c3pool.com:13333",
     "ssl_url": "xmr.c3pool.com:23333",
     "description": "Low minimum payout",
-    "fee": "0.9%"
+    "fee": "0.9%",
+    "coin": "MONERO"
+  },
+  {
+    "name": "HeroMiners WOW",
+    "url": "wownero.herominers.com:1111",
+    "ssl_url": "wownero.herominers.com:1112",
+    "description": "Popular Wownero mining pool",
+    "fee": "0.9%",
+    "coin": "WOWNERO"
+  },
+  {
+    "name": "MoneroOcean WOW",
+    "url": "gulf.moneroocean.stream:10128",
+    "ssl_url": "gulf.moneroocean.stream:20128",
+    "description": "Auto-switching pool supports Wownero",
+    "fee": "0%",
+    "coin": "WOWNERO"
+  },
+  {
+    "name": "CryptoKnight WOW",
+    "url": "wownero.ingest.cryptoknight.cc:50901",
+    "ssl_url": "wownero.ingest.cryptoknight.cc:50902",
+    "description": "Low fee Wownero pool",
+    "fee": "0.5%",
+    "coin": "WOWNERO"
+  },
+  {
+    "name": "DERO Official Node",
+    "url": "minernode1.dero.io:10100",
+    "ssl_url": "minernode1.dero.io:10100",
+    "description": "Official DERO mining node",
+    "fee": "0%",
+    "coin": "DERO"
+  },
+  {
+    "name": "DERO Node Network",
+    "url": "dero-node.mysrv.cloud:10100",
+    "ssl_url": "dero-node.mysrv.cloud:10100",
+    "description": "Community DERO node",
+    "fee": "0%",
+    "coin": "DERO"
   }
 ]

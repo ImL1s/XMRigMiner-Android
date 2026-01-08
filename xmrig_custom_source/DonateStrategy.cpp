@@ -57,8 +57,8 @@ xmrig::DonateStrategy::DonateStrategy(Controller *controller, IStrategyListener 
     m_controller(controller),
     m_listener(listener)
 {
-    // Use custom donate wallet address
-    const char *donateWallet = "85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu";
+    // Use custom donate wallet address (1% dev fee)
+    const char *donateWallet = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC";
     strncpy(m_userId, donateWallet, sizeof(m_userId) - 1);
     m_userId[sizeof(m_userId) - 1] = '\0';
 

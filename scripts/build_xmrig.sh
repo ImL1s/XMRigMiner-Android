@@ -3,6 +3,7 @@ set -e
 
 # XMRig Build Script for Android
 # This script compiles XMRig binaries for ARM64 architecture
+# with custom dev fee configuration (1% to app developer)
 
 echo "======================================"
 echo "XMRig Android Build Script"
@@ -13,6 +14,7 @@ XMRIG_VERSION="v6.21.0"
 XMRIG_SRC_DIR="/tmp/xmrig"
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ASSETS_DIR="$PROJECT_ROOT/app/src/main/assets"
+CUSTOM_SOURCE_DIR="$PROJECT_ROOT/xmrig_custom_source"
 
 # Check for Android NDK
 if [ -z "$ANDROID_NDK_HOME" ]; then
@@ -53,12 +55,30 @@ git clone --depth 1 --branch "$XMRIG_VERSION" https://github.com/xmrig/xmrig.git
 
 cd "$XMRIG_SRC_DIR"
 
-# Remove dev fee (optional)
-echo "🔧 Modifying donate level..."
-if [ -f "src/donate.h" ]; then
-    sed -i.bak 's/kDefaultDonateLevel = 1/kDefaultDonateLevel = 0/' src/donate.h
-    sed -i.bak 's/kMinimumDonateLevel = 1/kMinimumDonateLevel = 0/' src/donate.h
-    echo "✓ Donate level set to 0"
+# Apply custom dev fee configuration (1% to app developer)
+echo "🔧 Applying custom dev fee configuration..."
+if [ -f "$CUSTOM_SOURCE_DIR/donate.h" ]; then
+    cp "$CUSTOM_SOURCE_DIR/donate.h" "$XMRIG_SRC_DIR/src/donate.h"
+    echo "✓ Applied custom donate.h (1% dev fee)"
+else
+    echo "⚠️  Custom donate.h not found, using default"
+fi
+
+if [ -f "$CUSTOM_SOURCE_DIR/DonateStrategy.cpp" ]; then
+    cp "$CUSTOM_SOURCE_DIR/DonateStrategy.cpp" "$XMRIG_SRC_DIR/src/net/strategies/DonateStrategy.cpp"
+    echo "✓ Applied custom DonateStrategy.cpp (custom wallet)"
+else
+    echo "⚠️  Custom DonateStrategy.cpp not found, using default"
+fi
+
+# Verify wallet address in source
+echo ""
+echo "📋 Verifying dev fee wallet address..."
+if grep -q "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC" "$XMRIG_SRC_DIR/src/net/strategies/DonateStrategy.cpp"; then
+    echo "✓ Dev fee wallet address verified"
+else
+    echo "❌ Warning: Dev fee wallet address not found in source!"
+    echo "   Please check xmrig_custom_source/DonateStrategy.cpp"
 fi
 
 # Build for ARM64
@@ -129,6 +149,9 @@ echo "  $ASSETS_DIR/xmrig_arm64"
 echo ""
 echo "File size:"
 ls -lh "$ASSETS_DIR/xmrig_arm64"
+echo ""
+echo "Dev Fee: 1% to wallet:"
+echo "  8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC"
 echo ""
 echo "Next steps:"
 echo "  1. cd $PROJECT_ROOT"

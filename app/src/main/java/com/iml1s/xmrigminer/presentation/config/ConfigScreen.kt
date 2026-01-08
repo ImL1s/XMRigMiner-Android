@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.iml1s.xmrigminer.data.model.CoinType
 import com.iml1s.xmrigminer.data.model.Pool
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -104,12 +105,19 @@ private fun ConfigContent(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
+        // Coin Type Selection (新增)
+        CoinSelectionCard(
+            selectedCoinType = state.selectedCoinType,
+            onCoinTypeChanged = { onEvent(ConfigUiEvent.CoinTypeChanged(it)) }
+        )
+
         // Pool Selection
         PoolSelectionCard(
-            pools = state.pools,
+            pools = state.filteredPools,  // 使用過濾後的礦池列表
             selectedPool = state.selectedPool,
             currentPoolUrl = state.config.poolUrl,
             useTls = state.config.useTls,
+            coinType = state.selectedCoinType,
             onPoolSelected = { onEvent(ConfigUiEvent.PoolSelected(it)) },
             onCustomUrlChanged = { onEvent(ConfigUiEvent.CustomPoolUrlChanged(it)) },
             onTlsToggled = { onEvent(ConfigUiEvent.TlsToggled(it)) }
@@ -120,6 +128,7 @@ private fun ConfigContent(
             walletAddress = state.config.walletAddress,
             workerName = state.config.workerName,
             validationError = state.validationError,
+            coinType = state.selectedCoinType,
             onWalletAddressChanged = { onEvent(ConfigUiEvent.WalletAddressChanged(it)) },
             onWorkerNameChanged = { onEvent(ConfigUiEvent.WorkerNameChanged(it)) }
         )
@@ -156,6 +165,79 @@ private fun ConfigContent(
     }
 }
 
+@Composable
+private fun CoinSelectionCard(
+    selectedCoinType: CoinType,
+    onCoinTypeChanged: (CoinType) -> Unit
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            Text(
+                text = "Select Cryptocurrency",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                CoinType.entries.forEach { coinType ->
+                    FilterChip(
+                        selected = selectedCoinType == coinType,
+                        onClick = { onCoinTypeChanged(coinType) },
+                        label = { Text(coinType.displayName) },
+                        modifier = Modifier.weight(1f),
+                        leadingIcon = if (selectedCoinType == coinType) {
+                            { Icon(Icons.Default.Check, contentDescription = null, Modifier.size(18.dp)) }
+                        } else null
+                    )
+                }
+            }
+
+            // 演算法資訊
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.secondaryContainer,
+                shape = MaterialTheme.shapes.small
+            ) {
+                Row(
+                    modifier = Modifier.padding(12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        Icons.Default.Memory,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                    Column {
+                        Text(
+                            text = "Algorithm: ${selectedCoinType.algorithm}",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer
+                        )
+                        Text(
+                            text = when (selectedCoinType) {
+                                CoinType.MONERO -> "RandomX - Full mode (2MB)"
+                                CoinType.WOWNERO -> "RandomWOW - Light mode (1MB)"
+                                CoinType.DERO -> "AstroBWT/v3 - CPU optimized"
+                            },
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSecondaryContainer
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun PoolSelectionCard(
@@ -163,6 +245,7 @@ private fun PoolSelectionCard(
     selectedPool: Pool?,
     currentPoolUrl: String,
     useTls: Boolean,
+    coinType: CoinType,
     onPoolSelected: (Pool) -> Unit,
     onCustomUrlChanged: (String) -> Unit,
     onTlsToggled: (Boolean) -> Unit
@@ -306,9 +389,21 @@ private fun WalletConfigCard(
     walletAddress: String,
     workerName: String,
     validationError: String?,
+    coinType: CoinType,
     onWalletAddressChanged: (String) -> Unit,
     onWorkerNameChanged: (String) -> Unit
 ) {
+    val walletLabel = when (coinType) {
+        CoinType.MONERO -> "Monero Wallet Address *"
+        CoinType.WOWNERO -> "Wownero Wallet Address *"
+        CoinType.DERO -> "DERO Wallet Address *"
+    }
+    val walletPlaceholder = when (coinType) {
+        CoinType.MONERO -> "4..."
+        CoinType.WOWNERO -> "Wo..."
+        CoinType.DERO -> "dero..."
+    }
+
     Card(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -325,8 +420,8 @@ private fun WalletConfigCard(
             OutlinedTextField(
                 value = walletAddress,
                 onValueChange = onWalletAddressChanged,
-                label = { Text("Monero Wallet Address *") },
-                placeholder = { Text("4...") },
+                label = { Text(walletLabel) },
+                placeholder = { Text(walletPlaceholder) },
                 leadingIcon = { Icon(Icons.Default.AccountBalanceWallet, null) },
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true,

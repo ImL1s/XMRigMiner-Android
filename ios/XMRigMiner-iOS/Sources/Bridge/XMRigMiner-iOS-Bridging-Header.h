@@ -14,15 +14,19 @@
 // Forward declare the XMRigBridge Objective-C class
 @interface XMRigBridge : NSObject
 
-+ (instancetype)shared;
-- (BOOL)initializeWithConfig:(NSString *)jsonConfig;
+@property (nonatomic, copy, nullable) void (^logCallback)(NSString * _Nonnull);
+
++ (instancetype _Nonnull)shared;
+- (BOOL)initializeWithConfig:(NSString * _Nonnull)jsonConfig;
 - (BOOL)startMining;
 - (void)stopMining;
 - (BOOL)isRunning;
-- (NSDictionary *)getStats;
+- (NSDictionary * _Nonnull)getStats;
 - (double)getCurrentHashrate;
 - (void)setThreads:(int)count;
-- (NSString *)getVersion;
+- (NSString * _Nonnull)getVersion;
+- (void)cleanup;
+- (void)updateStatsFromLogLine:(NSString * _Nonnull)line;
 
 @end
 

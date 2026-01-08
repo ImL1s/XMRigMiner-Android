@@ -1,0 +1,309 @@
+/* XMRig Miner Desktop - Styles */
+:root {
+    --primary: #7c3aed;
+    --primary-dark: #5b21b6;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+#app {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.app-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.version {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+}
+
+.card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* System Info */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-item .label {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.info-item .value {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Mining Status */
+.status-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+}
+
+.status-indicator.mining {
+    background: var(--success);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: none;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.stat-item.primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+}
+
+.stat-item.primary .stat-value {
+    font-size: 32px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-item.primary .stat-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #dc2626;
+}
+
+/* Log Output */
+.log-output {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    font-size: 12px;
+}
+
+.log-line {
+    padding: 4px 0;
+    color: var(--text-secondary);
+}
+
+.log-line.log-success {
+    color: var(--success);
+}
+
+.log-line.log-error {
+    color: var(--danger);
+}
+
+.log-line.log-warning {
+    color: var(--warning);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}

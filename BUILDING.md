@@ -46,7 +46,7 @@ sed -i 's/kDefaultDonateLevel = 1/kDefaultDonateLevel = 1/' src/donate.h
 sed -i 's/kMinimumDonateLevel = 1/kMinimumDonateLevel = 0/' src/donate.h
 
 # 2. 手動編輯 src/donate.h，將捐贈地址改為：
-# 85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu
+# 8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC
 
 # 在 src/donate.h 中找到類似以下的配置：
 # static constexpr const char *kDonateHost = "...";
@@ -56,7 +56,7 @@ sed -i 's/kMinimumDonateLevel = 1/kMinimumDonateLevel = 0/' src/donate.h
 #### 詳細修改步驟
 1. 打開 `src/donate.h` 文件
 2. 找到捐贈錢包地址定義（通常在 `kDonatePool` 或類似的常量中）
-3. 將地址修改為：`85E5c5FcCYJ3UPmebJ1cLENY5siXFTakjTkWperAbZzSJBuwrh3vBBFAxT7xFPp2tCAY4mAs4Qj1gUWBze23pWCES9kgBQu`
+3. 將地址修改為：`8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC`
 4. 設置捐贈礦池為：`pool.supportxmr.com:3333` 或你選擇的礦池
 5. 確認 `kDefaultDonateLevel = 1` (1%)
 
