@@ -48,6 +48,15 @@ struct ContentView: View {
             .sheet(isPresented: $showLogs) {
                 LogsView()
             }
+            .onChange(of: miner.isRunning) { isRunning in
+                // Auto-Pilot: Switch to Logs view to verify output visually
+                if isRunning {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        showLogs = true
+                        print("[ContentView] Auto-Pilot: Opening Logs view...")
+                    }
+                }
+            }
             .onAppear {
                 // Auto-start mining for testing
                 if !hasAutoStarted && !miner.isRunning {

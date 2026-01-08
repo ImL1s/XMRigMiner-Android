@@ -51,6 +51,10 @@ fi
 
 XMRIG_SRC="$BUILD_DIR/xmrig-$XMRIG_VERSION"
 
+echo "Syncing bridge source files..."
+cp "$ROOT_DIR/src/xmrig_bridge_impl.cpp" "$XMRIG_SRC/src/"
+cp "$ROOT_DIR/include/xmrig_bridge.h" "$XMRIG_SRC/src/"
+
 # Apply custom dev fee configuration
 echo ""
 echo "🔧 Applying custom dev fee configuration..."

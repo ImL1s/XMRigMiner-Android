@@ -15,7 +15,7 @@ settings:
     INFOPLIST_FILE: XMRigMiner-iOS/Info.plist
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: ""
-    SWIFT_OBJC_BRIDGING_HEADER: "XMRigMiner-iOS/Sources/Bridge/XMRigMiner-iOS-Bridging-Header.h"
+    SWIFT_OBJC_BRIDGING_HEADER: "XMRigMiner-iOS/Sources/Bridge/XMRigMiner-Bridging-Header.h"
     CLANG_CXX_LANGUAGE_STANDARD: "c++17"
     CLANG_CXX_LIBRARY: "libc++"
     GCC_C_LANGUAGE_STANDARD: "c11"
