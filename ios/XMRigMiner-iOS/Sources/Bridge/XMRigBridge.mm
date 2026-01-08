@@ -1,103 +1,25 @@
 #import <Foundation/Foundation.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <atomic>
+#include "xmrig_bridge.h"
 
-// Static storage for stats (since we can't directly access XMRig internals)
-static std::atomic<double> s_hashrate_10s{0.0};
-static std::atomic<double> s_hashrate_60s{0.0};
-static std::atomic<double> s_hashrate_15m{0.0};
-static std::atomic<uint64_t> s_accepted_shares{0};
-static std::atomic<uint64_t> s_rejected_shares{0};
-static std::atomic<int> s_threads{0};
-static std::atomic<bool> s_is_mining{false};
-
-// C API stub implementations (until full XMRig integration)
-extern "C" {
-    int xmrig_init(const char* config_json) {
-        // Store config for later use
-        return 0;
-    }
-    
-    int xmrig_start(void) {
-        s_is_mining = true;
-        // TODO: Actually start XMRig mining
-        return 0;
-    }
-    
-    void xmrig_stop(void) {
-        s_is_mining = false;
-    }
-    
-    bool xmrig_is_running(void) {
-        return s_is_mining.load();
-    }
-    
-    typedef struct {
-        double hashrate_10s;
-        double hashrate_60s;
-        double hashrate_15m;
-        uint64_t total_hashes;
-        uint64_t accepted_shares;
-        uint64_t rejected_shares;
-        bool is_mining;
-        int threads;
-    } XMRigStats;
-    
-    void xmrig_get_stats(XMRigStats* stats) {
-        if (!stats) return;
-        stats->hashrate_10s = s_hashrate_10s.load();
-        stats->hashrate_60s = s_hashrate_60s.load();
-        stats->hashrate_15m = s_hashrate_15m.load();
-        stats->total_hashes = 0;
-        stats->accepted_shares = s_accepted_shares.load();
-        stats->rejected_shares = s_rejected_shares.load();
-        stats->is_mining = s_is_mining.load();
-        stats->threads = s_threads.load();
-    }
-    
-    double xmrig_get_hashrate(void) {
-        return s_hashrate_10s.load();
-    }
-    
-    void xmrig_set_threads(int threads) {
-        s_threads = threads;
-    }
-    
-    void xmrig_cleanup(void) {
-        s_is_mining = false;
-        s_hashrate_10s = 0.0;
-        s_hashrate_60s = 0.0;
-        s_hashrate_15m = 0.0;
-        s_accepted_shares = 0;
-        s_rejected_shares = 0;
-        s_threads = 0;
-    }
-    
-    const char* xmrig_version(void) {
-        return "6.25.0";
-    }
-    
-    void xmrig_update_stats(double hr10s, double hr60s, double hr15m,
-                            uint64_t accepted, uint64_t rejected, int threads) {
-        s_hashrate_10s = hr10s;
-        s_hashrate_60s = hr60s;
-        s_hashrate_15m = hr15m;
-        s_accepted_shares = accepted;
-        s_rejected_shares = rejected;
-        s_threads = threads;
-    }
-}
-
-// Callback type for log messages
-typedef void (^XMRigLogCallback)(NSString * _Nonnull);
+// Define the XMRigStats struct to match the header
+typedef struct {
+    double hashrate_10s;
+    double hashrate_60s;
+    double hashrate_15m;
+    uint64_t total_hashes;
+    uint64_t accepted_shares;
+    uint64_t rejected_shares;
+    bool is_mining;
+    int threads;
+} XMRigStatsData;
 
 // Objective-C Bridge Class
 @interface XMRigBridge : NSObject
 
-@property (nonatomic, copy, nullable) XMRigLogCallback logCallback;
+@property (nonatomic, copy, nullable) void (^logCallback)(NSString * _Nonnull);
 
 + (instancetype _Nonnull)shared;
+- (void)setStoragePath:(NSString * _Nonnull)path;
 - (BOOL)initializeWithConfig:(NSString * _Nonnull)jsonConfig;
 - (BOOL)startMining;
 - (void)stopMining;
@@ -111,6 +33,19 @@ typedef void (^XMRigLogCallback)(NSString * _Nonnull);
 
 @end
 
+// C callback for logs
+static void on_xmrig_log(const char* line) {
+    if (line == NULL) return;
+    
+    NSString *logLine = [NSString stringWithUTF8String:line];
+    if (logLine) {
+        // Dispatch to main thread for UI/stat updates
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[XMRigBridge shared] updateStatsFromLogLine:logLine];
+        });
+    }
+}
+
 @implementation XMRigBridge
 
 + (instancetype)shared {
@@ -118,32 +53,54 @@ typedef void (^XMRigLogCallback)(NSString * _Nonnull);
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[XMRigBridge alloc] init];
+        
+        // Register the log callback as soon as shared instance is created
+        xmrig_set_log_callback_v8(on_xmrig_log);
     });
     return instance;
 }
 
+- (void)setStoragePath:(NSString *)path {
+    const char *cPath = [path UTF8String];
+    xmrig_set_storage_path_v8(cPath);
+}
+
 - (BOOL)initializeWithConfig:(NSString *)jsonConfig {
+    fprintf(stderr, "[XMRigBridge] initializeWithConfig called\n");
+    NSLog(@"[XMRigBridge] initializeWithConfig called");
     const char *config = [jsonConfig UTF8String];
-    int result = xmrig_init(config);
+    
+    // Use v8 for definitive linking proof
+    int result = xmrig_init_v8(config);
+    
+    fprintf(stderr, "[XMRigBridge] xmrig_init_v8 returned %d\n", result);
+    NSLog(@"[XMRigBridge] xmrig_init_v8 returned %d", result);
     return result == 0;
 }
 
 - (BOOL)startMining {
-    int result = xmrig_start();
+    fprintf(stderr, "[XMRigBridge] startMining called\n");
+    NSLog(@"[XMRigBridge] startMining called");
+    
+    // Use v8 for definitive linking proof
+    int result = xmrig_start_v8();
+    
+    fprintf(stderr, "[XMRigBridge] xmrig_start_v8 returned %d\n", result);
+    NSLog(@"[XMRigBridge] xmrig_start_v8 returned %d", result);
     return result == 0;
 }
 
 - (void)stopMining {
-    xmrig_stop();
+    xmrig_stop_v8();
 }
 
 - (BOOL)isRunning {
-    return xmrig_is_running();
+    return xmrig_is_running_v8();
 }
 
 - (NSDictionary *)getStats {
-    XMRigStats stats;
-    xmrig_get_stats(&stats);
+    XMRigStatsData stats;
+    xmrig_get_stats_v8((XMRigStats*)&stats);
     
     return @{
         @"hashrate_10s": @(stats.hashrate_10s),
@@ -158,24 +115,29 @@ typedef void (^XMRigLogCallback)(NSString * _Nonnull);
 }
 
 - (double)getCurrentHashrate {
-    return xmrig_get_hashrate();
+    return xmrig_get_hashrate_v8();
 }
 
 - (void)setThreads:(int)count {
-    xmrig_set_threads(count);
+    xmrig_set_threads_v8(count);
 }
 
 - (NSString *)getVersion {
-    const char *version = xmrig_version();
+    const char *version = xmrig_version_v8();
     return [NSString stringWithUTF8String:version];
 }
 
 - (void)cleanup {
-    xmrig_cleanup();
+    xmrig_cleanup_v8();
 }
 
 // Parse XMRig log line and update stats
 - (void)updateStatsFromLogLine:(NSString *)line {
+    // Forward to callback first to show in UI
+    if (self.logCallback) {
+        self.logCallback(line);
+    }
+
     // Parse hashrate line: "speed 10s/60s/15m 150.0 140.0 130.0 H/s"
     NSRegularExpression *hashrateRegex = [NSRegularExpression 
         regularExpressionWithPattern:@"speed\\s+\\S+\\s+([\\d.]+)\\s+([\\d.]+)\\s+([\\d.]+)"
@@ -192,10 +154,12 @@ typedef void (^XMRigLogCallback)(NSString * _Nonnull);
         double hr60s = [[line substringWithRange:[hashrateMatch rangeAtIndex:2]] doubleValue];
         double hr15m = [[line substringWithRange:[hashrateMatch rangeAtIndex:3]] doubleValue];
         
-        xmrig_update_stats(hr10s, hr60s, hr15m, 
-                          s_accepted_shares.load(), 
-                          s_rejected_shares.load(), 
-                          s_threads.load());
+        NSDictionary *currentStats = [self getStats];
+        uint64_t accepted = [currentStats[@"accepted_shares"] unsignedLongLongValue];
+        uint64_t rejected = [currentStats[@"rejected_shares"] unsignedLongLongValue];
+        int threads = [currentStats[@"threads"] intValue];
+        
+        xmrig_update_stats_v8(hr10s, hr60s, hr15m, accepted, rejected, threads);
         return;
     }
     
@@ -214,17 +178,13 @@ typedef void (^XMRigLogCallback)(NSString * _Nonnull);
         uint64_t accepted = [[line substringWithRange:[acceptedMatch rangeAtIndex:1]] longLongValue];
         uint64_t rejected = [[line substringWithRange:[acceptedMatch rangeAtIndex:2]] longLongValue];
         
-        xmrig_update_stats(s_hashrate_10s.load(), 
-                          s_hashrate_60s.load(), 
-                          s_hashrate_15m.load(),
-                          accepted, rejected, 
-                          s_threads.load());
-        return;
-    }
-    
-    // Forward to callback if set
-    if (self.logCallback) {
-        self.logCallback(line);
+        NSDictionary *currentStats = [self getStats];
+        double hr10s = [currentStats[@"hashrate_10s"] doubleValue];
+        double hr60s = [currentStats[@"hashrate_60s"] doubleValue];
+        double hr15m = [currentStats[@"hashrate_15m"] doubleValue];
+        int threads = [currentStats[@"threads"] intValue];
+        
+        xmrig_update_stats_v8(hr10s, hr60s, hr15m, accepted, rejected, threads);
     }
 }
 

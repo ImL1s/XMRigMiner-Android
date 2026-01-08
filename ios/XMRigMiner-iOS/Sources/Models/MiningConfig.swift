@@ -14,8 +14,8 @@ struct PoolConfig: Codable {
     var pass: String
     var tls: Bool
     
-    init(url: String = "pool.supportxmr.com:3333",
-         user: String = "",
+    init(url: String = "gulf.moneroocean.stream:10128",
+         user: String = "8AfUwcnoJiRDMXnDGj3zX6bMgfaj9pM1WFGr2pakLm3jSYXVLD5fcDMBzkmk4AeSqWYQTA5aerXJ43W65AT82RMqG6NDBnC",
          pass: String = "x",
          tls: Bool = true) {
         self.url = url
